@@ -1,6 +1,6 @@
-# 🥞 Pancake Frontend
+# 🥞 thedap-rontend
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/7bebf1a3-be7b-4165-afd1-446256acd5e3/deploy-status)](https://app.netlify.com/sites/pancake-prod/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/aac3e476-53a5-4fb5-bbd6-823c035e888f/deploy-status)](https://app.netlify.com/sites/thedap/deploys)
 
 This project contains the main features of the pancake application.
 
