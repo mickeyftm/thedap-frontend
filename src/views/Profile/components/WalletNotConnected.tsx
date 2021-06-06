@@ -1,5 +1,5 @@
 import React from 'react'
-import { Heading, Text } from '@pancakeswap/uikit'
+import { Heading, Text } from '@thedac-space/thedap-uikit'
 import { useTranslation } from 'contexts/Localization'
 import UnlockButton from 'components/UnlockButton'
 

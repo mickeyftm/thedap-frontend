@@ -9,7 +9,7 @@ import {
   TeamPlayerIcon,
   TrophyGoldIcon,
   Skeleton,
-} from '@pancakeswap/uikit'
+} from '@thedac-space/thedap-uikit'
 import { useTranslation } from 'contexts/Localization'
 import { UserTradingInformationProps } from '../../types'
 import { useCompetitionCakeRewards, getRewardGroupAchievements } from '../../helpers'

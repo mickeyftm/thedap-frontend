@@ -1,6 +1,6 @@
 import React, { lazy, Suspense, useContext, useMemo } from 'react'
 import styled from 'styled-components'
-import { Flex, Text } from '@pancakeswap/uikit'
+import { Flex, Text } from '@thedac-space/thedap-uikit'
 import PastLotteryDataContext from 'contexts/PastLotteryDataContext'
 import { useTranslation } from 'contexts/Localization'
 import useTheme from 'hooks/useTheme'

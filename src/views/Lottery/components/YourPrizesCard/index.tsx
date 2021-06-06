@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Card, CardBody } from '@pancakeswap/uikit'
+import { Card, CardBody } from '@thedac-space/thedap-uikit'
 import PrizesWonContent from './PrizesWonContent'
 import NoPrizesContent from './NoPrizesContent'
 
