@@ -2,6 +2,7 @@ import { MenuEntry } from '@thedac-space/thedap-uikit'
 import { ContextApi } from 'contexts/Localization/types'
 
 const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
+  /*
   {
     label: t('Home'),
     icon: 'HomeIcon',
@@ -99,11 +100,13 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
       },
     ],
   },
+  */
   {
     label: t('IFO'),
     icon: 'IfoIcon',
     href: '/ifo',
   },
+  /*
   {
     label: t('More'),
     icon: 'MoreIcon',
@@ -134,6 +137,7 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
       },
     ],
   },
+  */
 ]
 
 export default config
