@@ -2379,10 +2379,10 @@
     eslint-plugin-react "^7.21.5"
     eslint-plugin-react-hooks "^4.0.0"
 
-"@thedac-space/thedap-uikit@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@thedac-space/thedap-uikit/-/thedap-uikit-0.1.0.tgz#42b0ce0919dd41a6815af855496738c6486ea9e7"
-  integrity sha512-e296fS2YXqTzMHP4FNWSTd4tkd+s5BC5Pyt0U0gQgXILQMoaD2EGPvDsiOH7W2lrBcHZ7qTqn4paSE/l/tO0KQ==
+"@thedac-space/thedap-uikit@^0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@thedac-space/thedap-uikit/-/thedap-uikit-0.1.3.tgz#50cfc3333f3c505e3b8f500a513384765372d853"
+  integrity sha512-KYjVenRVDgFhFDJLqbzGLcZ6Vx2HO6P5EZ7GSHSuzjDZFoeVpWho2Ic2QSbvKV5D1vDw4Ox9h1kb5azv7/Z8tQ==
   dependencies:
     "@popperjs/core" "^2.9.2"
     "@types/lodash" "^4.14.168"
