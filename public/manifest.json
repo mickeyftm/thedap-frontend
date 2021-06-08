@@ -1,7 +1,7 @@
 {
-  "short_name": "PancakeSwap",
-  "name": "PancakeSwap",
-  "description": "Farm CAKE with Pancake LP Tokens",
+  "short_name": "thedap",
+  "name": "thedap",
+  "description": "thedap.space governance aggregator",
   "icons": [
     {
       "src": "favicon.ico",
