@@ -79,7 +79,7 @@ const CardsWrapper = styled.div<{ singleCard: boolean }>`
   grid-template-columns: 1fr;
   margin-bottom: 32px;
   ${({ theme }) => theme.mediaQueries.md} {
-    grid-template-columns: ${({ singleCard }) => (singleCard ? '1fr' : '1fr 1fr')};
+    grid-template-columns: ${({ singleCard }) => (singleCard ? '1fr' : '1fr 1fr 1fr')};
     justify-items: ${({ singleCard }) => (singleCard ? 'center' : 'unset')};
   }
 `
