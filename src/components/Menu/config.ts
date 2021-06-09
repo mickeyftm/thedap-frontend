@@ -2,12 +2,8 @@ import { MenuEntry } from '@thedac-space/thedap-uikit'
 import { ContextApi } from 'contexts/Localization/types'
 
 const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
-  /*
-  {
-    label: t('Home'),
-    icon: 'HomeIcon',
-    href: '/',
-  },
+
+  /* 
   {
     label: t('Trade'),
     icon: 'TradeIcon',
@@ -20,27 +16,9 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
         label: t('Liquidity'),
         href: 'https://exchange.pancakeswap.finance/#/pool',
       },
-      {
-        label: t('LP Migration'),
-        href: 'https://v1exchange.pancakeswap.finance/#/migrate',
-      },
-      {
-        label: t('V1 Liquidity (Old)'),
-        href: 'https://v1exchange.pancakeswap.finance/#/pool',
-      },
     ],
   },
-  {
-    label: t('Farms'),
-    icon: 'FarmIcon',
-    href: '/farms',
-  },
-  {
-    label: t('Pools'),
-    icon: 'PoolIcon',
-    href: '/pools',
-  },
-  {
+    {
     label: t('Prediction (BETA)'),
     icon: 'PredictionsIcon',
     href: '/prediction',
@@ -78,7 +56,7 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
       },
     ],
   },
-  {
+   {
     label: t('Info'),
     icon: 'InfoIcon',
     items: [
@@ -102,9 +80,24 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
   },
   */
   {
-    label: t('IFO'),
+    label: t('Home'),
+    icon: 'HomeIcon',
+    href: '/',
+  },
+  {
+    label: t('IDO'),
     icon: 'IfoIcon',
-    href: '/ifo',
+    href: '/ido',
+  },
+  {
+    label: t('LP Staking'),
+    icon: 'FarmIcon',
+    href: '/lp',
+  },
+  {
+    label: t('NPT Staking'),
+    icon: 'PoolIcon',
+    href: '/npt',
   },
   /*
   {

@@ -16,17 +16,18 @@ import history from './routerHistory'
 // Route-based code splitting
 // Only pool is included in the main bundle because of it's the most visited page
 const Home = lazy(() => import('./views/Home'))
-const Farms = lazy(() => import('./views/Farms'))
-const Lottery = lazy(() => import('./views/Lottery'))
 const Ifos = lazy(() => import('./views/Ifos'))
+const Farms = lazy(() => import('./views/Farms'))
+const Profile = lazy(() => import('./views/Profile'))
 const NotFound = lazy(() => import('./views/NotFound'))
+/*
+const Lottery = lazy(() => import('./views/Lottery'))
 const Collectibles = lazy(() => import('./views/Collectibles'))
 const Teams = lazy(() => import('./views/Teams'))
 const Team = lazy(() => import('./views/Teams/Team'))
-const Profile = lazy(() => import('./views/Profile'))
 const TradingCompetition = lazy(() => import('./views/TradingCompetition'))
 const Predictions = lazy(() => import('./views/Predictions'))
-
+*/
 // This config is required for number formatting
 BigNumber.config({
   EXPONENTIAL_AT: 1000,
@@ -49,45 +50,27 @@ const App: React.FC = () => {
             <Route path="/" exact>
               <Home />
             </Route>
-            <Route path="/farms">
+            <Route path="/lp">
               <Farms />
             </Route>
-            <Route path="/pools">
+            <Route path="/npt">
               <Pools />
             </Route>
-            <Route path="/lottery">
-              <Lottery />
-            </Route>
-            <Route path="/ifo">
+            <Route path="/ido">
               <Ifos />
-            </Route>
-            <Route path="/collectibles">
-              <Collectibles />
-            </Route>
-            <Route exact path="/teams">
-              <Teams />
-            </Route>
-            <Route path="/teams/:id">
-              <Team />
             </Route>
             <Route path="/profile">
               <Profile />
             </Route>
-            <Route path="/competition">
-              <TradingCompetition />
-            </Route>
-            <Route path="/prediction">
-              <Predictions />
-            </Route>
             {/* Redirect */}
             <Route path="/staking">
-              <Redirect to="/pools" />
+              <Redirect to="/npt" />
             </Route>
-            <Route path="/syrup">
-              <Redirect to="/pools" />
+            <Route path="/pools">
+              <Redirect to="/npt" />
             </Route>
             <Route path="/nft">
-              <Redirect to="/collectibles" />
+              <Redirect to="/home" />
             </Route>
             {/* 404 */}
             <Route component={NotFound} />
