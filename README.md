@@ -6,4 +6,4 @@ This project contains the main features of the thedap application.
 
 If you want to contribute, please refer to the [contributing guidelines](./CONTRIBUTING.md) of this project.
 
-Test from Polygon branch.
+Test from Polygon branch. 2
