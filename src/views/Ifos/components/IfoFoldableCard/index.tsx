@@ -169,6 +169,14 @@ const IfoFoldableCard: React.FC<IfoFoldableCardProps> = ({ ifo, publicIfoData, w
               onApprove={handleApprove}
               enableStatus={enableStatus}
             />
+            <IfoPoolCard
+              poolId={PoolIds.poolUnlimited}
+              ifo={ifo}
+              publicIfoData={publicIfoData}
+              walletIfoData={walletIfoData}
+              onApprove={handleApprove}
+              enableStatus={enableStatus}
+            />
           </CardsWrapper>
           <Achievement ifo={ifo} publicIfoData={publicIfoData} />
         </StyledCardBody>
