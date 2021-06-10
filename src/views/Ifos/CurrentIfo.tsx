@@ -22,6 +22,7 @@ const Ifo = () => {
       <IfoSteps ifo={activeIfo} walletIfoData={walletIfoData} />
       <IfoQuestions />
     </IfoLayout>
+    
   )
 }
 
