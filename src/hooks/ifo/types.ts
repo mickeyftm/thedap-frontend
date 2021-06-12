@@ -24,6 +24,7 @@ export interface PublicIfoData {
   currencyPriceInUSD: BigNumber
   numberPoints: number
   fetchIfoData: () => void
+  [PoolIds.poolEarly]?: PoolCharacteristics
   [PoolIds.poolBasic]?: PoolCharacteristics
   [PoolIds.poolUnlimited]: PoolCharacteristics
 }
@@ -40,6 +41,7 @@ export interface UserPoolCharacteristics {
 
 // Use only inside the useGetWalletIfoData hook
 export interface WalletIfoState {
+  [PoolIds.poolEarly]?: UserPoolCharacteristics
   [PoolIds.poolBasic]?: UserPoolCharacteristics
   [PoolIds.poolUnlimited]: UserPoolCharacteristics
 }

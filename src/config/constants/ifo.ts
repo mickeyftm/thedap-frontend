@@ -13,15 +13,21 @@ const ifos: Ifo[] = [
     id: 'metagamehub',
     address: '0x1aFB32b76696CdF05593Ca3f3957AEFB23a220FB',
     isActive: true,
-    name: 'Kalmar (KALM)',
-    poolBasic: {
-      saleAmount: '375,000 KALM',
+    name: 'metagamehub (MGH)',
+    poolEarly: {
+      saleAmount: '375,000 MGH',
       raiseAmount: '$750,000',
       cakeToBurn: '$375,000',
-      distributionRatio: 0.3,
+      distributionRatio: 0.1,
+    },
+    poolBasic: {
+      saleAmount: '375,000 MGH',
+      raiseAmount: '$750,000',
+      cakeToBurn: '$375,000',
+      distributionRatio: 0.1,
     },
     poolUnlimited: {
-      saleAmount: '875,000 KALM',
+      saleAmount: '875,000 MGH',
       raiseAmount: '$2,500,000',
       cakeToBurn: '$1,250,000',
       distributionRatio: 0.7,
