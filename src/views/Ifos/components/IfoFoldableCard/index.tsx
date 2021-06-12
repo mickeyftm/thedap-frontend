@@ -79,7 +79,7 @@ const CardsWrapper = styled.div<{ singleCard: boolean }>`
   grid-template-columns: 1fr;
   margin-bottom: 32px;
   ${({ theme }) => theme.mediaQueries.md} {
-    grid-template-columns: ${({ singleCard }) => (singleCard ? '1fr' : '1fr 1fr')};
+    grid-template-columns: ${({ singleCard }) => (singleCard ? '1fr' : '1fr 1fr 1fr')};
     justify-items: ${({ singleCard }) => (singleCard ? 'center' : 'unset')};
   }
 `
@@ -151,6 +151,7 @@ const IfoFoldableCard: React.FC<IfoFoldableCardProps> = ({ ifo, publicIfoData, w
         <StyledCardBody>
           {isActive && <Timer publicIfoData={publicIfoData} />}
           <CardsWrapper singleCard={!publicIfoData.poolBasic || !walletIfoData.poolBasic}>
+            {/*
             {publicIfoData.poolBasic && walletIfoData.poolBasic && (
               <IfoPoolCard
                 poolId={PoolIds.poolBasic}
@@ -161,6 +162,23 @@ const IfoFoldableCard: React.FC<IfoFoldableCardProps> = ({ ifo, publicIfoData, w
                 enableStatus={enableStatus}
               />
             )}
+            */}
+            <IfoPoolCard
+              poolId={PoolIds.poolUnlimited}
+              ifo={ifo}
+              publicIfoData={publicIfoData}
+              walletIfoData={walletIfoData}
+              onApprove={handleApprove}
+              enableStatus={enableStatus}
+            />
+            <IfoPoolCard
+              poolId={PoolIds.poolUnlimited}
+              ifo={ifo}
+              publicIfoData={publicIfoData}
+              walletIfoData={walletIfoData}
+              onApprove={handleApprove}
+              enableStatus={enableStatus}
+            />
             <IfoPoolCard
               poolId={PoolIds.poolUnlimited}
               ifo={ifo}

@@ -27,10 +27,10 @@ const WinCard = () => {
 
   return (
     <StyledFarmStakingCard>
-      <NavLink exact activeClassName="active" to="/lottery" id="lottery-pot-cta">
+      <NavLink exact activeClassName="active" to="/ido" id="lottery-pot-cta">
         <CardBody>
           <Heading color="contrast" scale="lg">
-            {t('Lottery')}
+            {t('Governance Aggregator')}
           </Heading>
           <CardMidContent color="#7645d9">{t('Coming Soon')}</CardMidContent>
           <Flex justifyContent="space-between">
