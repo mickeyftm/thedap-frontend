@@ -78,6 +78,16 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
       },
     ],
   },
+  {
+    label: t('LP Staking'),
+    icon: 'FarmIcon',
+    href: '/lp',
+  },
+  {
+    label: t('NPT Staking'),
+    icon: 'PoolIcon',
+    href: '/npt',
+  },
   */
   {
     label: t('Home'),
@@ -88,16 +98,6 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
     label: t('IDO'),
     icon: 'IfoIcon',
     href: '/ido',
-  },
-  {
-    label: t('LP Staking'),
-    icon: 'FarmIcon',
-    href: '/lp',
-  },
-  {
-    label: t('NPT Staking'),
-    icon: 'PoolIcon',
-    href: '/npt',
   },
   /*
   {

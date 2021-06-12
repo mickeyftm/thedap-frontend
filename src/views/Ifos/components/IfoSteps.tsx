@@ -56,7 +56,7 @@ const IfoSteps: React.FC<Props> = ({ ifo, walletIfoData }) => {
         return (
           <CardBody>
             <Heading as="h4" color="secondary" mb="16px">
-              {t('Activate your Profile')}
+              {t('Conduct KYC')}
             </Heading>
             <Text color="textSubtle" small mb="16px">
               {t('You’ll need an active PancakeSwap Profile to take part in an IFO!')}
@@ -76,11 +76,10 @@ const IfoSteps: React.FC<Props> = ({ ifo, walletIfoData }) => {
         return (
           <CardBody>
             <Heading as="h4" color="secondary" mb="16px">
-              {t('Get CAKE-BNB LP Tokens')}
+              {t('Get USDT tokens')}
             </Heading>
             <Text color="textSubtle" small>
-              {t('Stake CAKE and BNB in the liquidity pool to get LP tokens.')} <br />
-              {t('You’ll spend them to buy IFO sale tokens.')}
+              {t('You’ll spend them to commit for MGH tokens.')}
             </Text>
             <Button
               as={Link}
@@ -97,11 +96,11 @@ const IfoSteps: React.FC<Props> = ({ ifo, walletIfoData }) => {
         return (
           <CardBody>
             <Heading as="h4" color="secondary" mb="16px">
-              {t('Commit LP Tokens')}
+              {t('Commit USDT')}
             </Heading>
             <Text color="textSubtle" small>
-              {t('When the IFO sales are live, you can “commit” your LP tokens to buy the tokens being sold.')} <br />
-              {t('We recommend committing to the Basic Sale first, but you can do both if you like.')}
+              {t('When the MGH private sale is live, you can “commit” your USDT tokens to buy the tokens being sold.')} <br />
+              {t('The minimum purchpase price is 1000 USDT')}
             </Text>
           </CardBody>
         )
@@ -109,11 +108,11 @@ const IfoSteps: React.FC<Props> = ({ ifo, walletIfoData }) => {
         return (
           <CardBody>
             <Heading as="h4" color="secondary" mb="16px">
-              {t('Claim your tokens and achievement')}
+              {t('Claim your tokens')}
             </Heading>
             <Text color="textSubtle" small>
               {t(
-                'After the IFO sales finish, you can claim any IFO tokens that you bought, and any unspent CAKE-BNB LP tokens will be returned to your wallet.',
+                'After the MGH private sale finished, you can claim any MGH tokens that you bought, and any unspent USDT will be returned to your wallet.',
               )}
             </Text>
           </CardBody>
