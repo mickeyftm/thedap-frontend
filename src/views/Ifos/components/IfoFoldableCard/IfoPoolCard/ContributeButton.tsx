@@ -17,6 +17,7 @@ interface Props {
   publicIfoData: PublicIfoData
   walletIfoData: WalletIfoData
 }
+
 const ContributeButton: React.FC<Props> = ({ poolId, ifo, publicIfoData, walletIfoData }) => {
   const publicPoolCharacteristics = publicIfoData[poolId]
   const userPoolCharacteristics = walletIfoData[poolId]
@@ -25,7 +26,6 @@ const ContributeButton: React.FC<Props> = ({ poolId, ifo, publicIfoData, walletI
   const { t } = useTranslation()
   const { toastSuccess } = useToast()
   const { balance: userCurrencyBalance } = useTokenBalance(getAddress(ifo.currency.address))
-
   // Refetch all the data, and display a message when fetching is done
   const handleContributeSuccess = async (amount: BigNumber) => {
     await Promise.all([publicIfoData.fetchIfoData(), walletIfoData.fetchIfoData()])

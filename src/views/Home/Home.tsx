@@ -84,26 +84,36 @@ const Home: React.FC = () => {
 
   return (
     <Page>
-      <Hero>
         <Heading as="h1" scale="xl" mb="24px" color="secondary">
           {t('thedap.space')}
         </Heading>
-        <Text>{t('The #1 Governance Aggregator')}</Text>
-      </Hero>
-      <div>
+        <Text>
+          <br />
+          {t('Lorem ipsum.')}<br />
+          {t('dolor at enum.')}<br />
+          </Text>
+      <div style={{
+    paddingTop: '50px',
+  }}>
+        {/*
         <Cards>
           <FarmStakingCard />
           <LotteryCard />
         </Cards>
+        */}
         <CTACards>
+          {/*
           <EarnAPRCard />
+          */}
+            <WinCard />
           <EarnAssetCard />
-          <WinCard />
         </CTACards>
+        {/*
         <Cards>
           <CakeStats />
           <TotalValueLockedCard />
         </Cards>
+      */}
       </div>
     </Page>
   )

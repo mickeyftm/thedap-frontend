@@ -17,10 +17,11 @@ import history from './routerHistory'
 // Only pool is included in the main bundle because of it's the most visited page
 const Home = lazy(() => import('./views/Home'))
 const Ifos = lazy(() => import('./views/Ifos'))
-const Farms = lazy(() => import('./views/Farms'))
 const Profile = lazy(() => import('./views/Profile'))
 const NotFound = lazy(() => import('./views/NotFound'))
 /*
+const Farms = lazy(() => import('./views/Farms'))
+const Profile = lazy(() => import('./views/Profile'))
 const Lottery = lazy(() => import('./views/Lottery'))
 const Collectibles = lazy(() => import('./views/Collectibles'))
 const Teams = lazy(() => import('./views/Teams'))
@@ -50,28 +51,17 @@ const App: React.FC = () => {
             <Route path="/" exact>
               <Home />
             </Route>
-            <Route path="/lp">
-              <Farms />
-            </Route>
-            <Route path="/npt">
-              <Pools />
-            </Route>
             <Route path="/ido">
               <Ifos />
-            </Route>
+              </Route>
             <Route path="/profile">
               <Profile />
             </Route>
-            {/* Redirect */}
-            <Route path="/staking">
-              <Redirect to="/npt" />
-            </Route>
-            <Route path="/pools">
-              <Redirect to="/npt" />
-            </Route>
-            <Route path="/nft">
+            {/* Redirect 
+                        <Route path="/nft">
               <Redirect to="/home" />
             </Route>
+            */}
             {/* 404 */}
             <Route component={NotFound} />
           </Switch>
