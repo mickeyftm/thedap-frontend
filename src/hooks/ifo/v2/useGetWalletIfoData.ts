@@ -16,6 +16,14 @@ import { WalletIfoState, WalletIfoData } from '../types'
 const useGetWalletIfoData = (ifo: Ifo): WalletIfoData => {
   const { fastRefresh } = useRefresh()
   const [state, setState] = useState<WalletIfoState>({
+    poolEarly: {
+      amountTokenCommittedInLP: BIG_ZERO,
+      offeringAmountInToken: BIG_ZERO,
+      refundingAmountInLP: BIG_ZERO,
+      taxAmountInLP: BIG_ZERO,
+      hasClaimed: false,
+      isPendingTx: false,
+    },
     poolBasic: {
       amountTokenCommittedInLP: BIG_ZERO,
       offeringAmountInToken: BIG_ZERO,
@@ -68,6 +76,14 @@ const useGetWalletIfoData = (ifo: Ifo): WalletIfoData => {
 
     setState((prevState) => ({
       ...prevState,
+      poolEarly: {
+        ...prevState.poolBasic,
+        amountTokenCommittedInLP: new BigNumber(userInfo[0][0]),
+        offeringAmountInToken: new BigNumber(amounts[0][0]),
+        refundingAmountInLP: new BigNumber(amounts[0][1]),
+        taxAmountInLP: new BigNumber(amounts[0][2]),
+        hasClaimed: userInfo[1][0],
+      },
       poolBasic: {
         ...prevState.poolBasic,
         amountTokenCommittedInLP: new BigNumber(userInfo[0][0]),

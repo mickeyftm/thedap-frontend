@@ -27,6 +27,11 @@ interface CardConfig {
 }
 
 const cardConfig: CardConfig = {
+  [PoolIds.poolEarly]: {
+    title: 'Early Sale',
+    variant: 'blue',
+    tooltip: 'Every person can only commit a limited amount, but may expect a higher return per token committed.',
+  },
   [PoolIds.poolBasic]: {
     title: 'Basic Sale',
     variant: 'blue',

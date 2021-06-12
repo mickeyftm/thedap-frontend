@@ -14,6 +14,7 @@ export interface Token {
 }
 
 export enum PoolIds {
+  poolEarly = 'poolEarly',
   poolBasic = 'poolBasic',
   poolUnlimited = 'poolUnlimited',
 }
@@ -39,6 +40,7 @@ export interface Ifo {
   campaignId: string
   tokenOfferingPrice: number
   version: number
+  [PoolIds.poolEarly]?: IfoPoolInfo
   [PoolIds.poolBasic]?: IfoPoolInfo
   [PoolIds.poolUnlimited]: IfoPoolInfo
 }
