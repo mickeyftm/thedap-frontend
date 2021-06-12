@@ -37,6 +37,14 @@ const useGetPublicIfoData = (ifo: Ifo): PublicIfoData => {
     secondsUntilStart: 0,
     progress: 5,
     secondsUntilEnd: 0,
+    poolEarly: {
+      raisingAmountPool: BIG_ZERO,
+      offeringAmountPool: BIG_ZERO,
+      limitPerUserInLP: BIG_ZERO,
+      taxRate: 0,
+      totalAmountPool: BIG_ZERO,
+      sumTaxesOverflow: BIG_ZERO,
+    },
     poolBasic: {
       raisingAmountPool: BIG_ZERO,
       offeringAmountPool: BIG_ZERO,
@@ -61,15 +69,16 @@ const useGetPublicIfoData = (ifo: Ifo): PublicIfoData => {
   const contract = useIfoV2Contract(address)
 
   const fetchIfoData = useCallback(async () => {
-    const [startBlock, endBlock, poolBasic, poolUnlimited, taxRate, numberPoints] = (await makeBatchRequest([
+    const [startBlock, endBlock, poolEarly, poolBasic, poolUnlimited, taxRate, numberPoints] = (await makeBatchRequest([
       contract.methods.startBlock().call,
       contract.methods.endBlock().call,
       contract.methods.viewPoolInformation(0).call,
       contract.methods.viewPoolInformation(1).call,
       contract.methods.viewPoolTaxRateOverflow(1).call,
       contract.methods.numberPoints().call,
-    ])) as [string, string, PoolCharacteristics, PoolCharacteristics, number, number]
+    ])) as [string, string, PoolCharacteristics,PoolCharacteristics, PoolCharacteristics, number, number]
 
+    const poolEarlyFormatted = formatPool(poolEarly)
     const poolBasicFormatted = formatPool(poolBasic)
     const poolUnlimitedFormatted = formatPool(poolUnlimited)
 
@@ -90,6 +99,7 @@ const useGetPublicIfoData = (ifo: Ifo): PublicIfoData => {
       ...prev,
       secondsUntilEnd: blocksRemaining * BSC_BLOCK_TIME,
       secondsUntilStart: (startBlockNum - currentBlock) * BSC_BLOCK_TIME,
+      poolEarly: { ...poolEarlyFormatted, taxRate: 0 },
       poolBasic: { ...poolBasicFormatted, taxRate: 0 },
       poolUnlimited: { ...poolUnlimitedFormatted, taxRate: taxRate / TAX_PRECISION },
       status,

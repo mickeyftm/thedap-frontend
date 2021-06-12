@@ -164,7 +164,7 @@ const IfoFoldableCard: React.FC<IfoFoldableCardProps> = ({ ifo, publicIfoData, w
             )}
             */}
             <IfoPoolCard
-              poolId={PoolIds.poolUnlimited}
+              poolId={PoolIds.poolEarly}
               ifo={ifo}
               publicIfoData={publicIfoData}
               walletIfoData={walletIfoData}
@@ -172,7 +172,7 @@ const IfoFoldableCard: React.FC<IfoFoldableCardProps> = ({ ifo, publicIfoData, w
               enableStatus={enableStatus}
             />
             <IfoPoolCard
-              poolId={PoolIds.poolUnlimited}
+              poolId={PoolIds.poolBasic}
               ifo={ifo}
               publicIfoData={publicIfoData}
               walletIfoData={walletIfoData}
