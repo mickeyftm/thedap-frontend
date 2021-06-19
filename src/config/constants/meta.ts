@@ -4,7 +4,7 @@ import { PageMeta } from './types'
 export const DEFAULT_META: PageMeta = {
   title: 'thedap.space',
   description:
-    'The first Governance Aggregator! Earn Governance Tokens through NPT Staking! Initial DAO Offerings NPTs, and more.',
+    'The first DAO Governance Aggregator! DAO Offerings NPTs, and more.',
   image: 'https://pancakeswap.finance/images/hero.png',
 }
 
@@ -12,47 +12,11 @@ export const getCustomMeta = (path: string, t: ContextApi['t']): PageMeta => {
   switch (path) {
     case '/':
       return {
-        title: `${t('Home')} | ${t('PancakeSwap')}`,
-      }
-    case '/competition':
-      return {
-        title: `${t('Trading Battle')} | ${t('PancakeSwap')}`,
-      }
-    case '/prediction':
-      return {
-        title: `${t('Prediction')} | ${t('PancakeSwap')}`,
-      }
-    case '/farms':
-      return {
-        title: `${t('Farms')} | ${t('PancakeSwap')}`,
-      }
-    case '/pools':
-      return {
-        title: `${t('Pools')} | ${t('PancakeSwap')}`,
-      }
-    case '/lottery':
-      return {
-        title: `${t('Lottery')} | ${t('PancakeSwap')}`,
-      }
-    case '/collectibles':
-      return {
-        title: `${t('Collectibles')} | ${t('PancakeSwap')}`,
+        title: `${t('Home')} | ${t('thedap.space')}`,
       }
     case '/ifo':
       return {
-        title: `${t('Initial Farm Offering')} | ${t('PancakeSwap')}`,
-      }
-    case '/teams':
-      return {
-        title: `${t('Leaderboard')} | ${t('PancakeSwap')}`,
-      }
-    case '/profile/tasks':
-      return {
-        title: `${t('Task Center')} | ${t('PancakeSwap')}`,
-      }
-    case '/profile':
-      return {
-        title: `${t('Your Profile')} | ${t('PancakeSwap')}`,
+        title: `${t('DAO Offering')} | ${t('thedap.sapce')}`,
       }
     default:
       return null

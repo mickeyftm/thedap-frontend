@@ -2,7 +2,6 @@ import React from 'react'
 import { useTranslation } from 'contexts/Localization'
 import { Card, CardBody, CardHeader, Text, useTooltip, HelpIcon, Flex } from '@thedac-space/thedap-uikit'
 import { Ifo, PoolIds } from 'config/constants/types'
-import { useProfile } from 'state/hooks'
 import { PublicIfoData, WalletIfoData } from 'hooks/ifo/types'
 import { EnableStatus } from '../types'
 import IfoCardTokens from './IfoCardTokens'
@@ -25,7 +24,6 @@ interface CardConfig {
     tooltip: string
   }
 }
-
 const cardConfig: CardConfig = {
   [PoolIds.poolEarly]: {
     title: 'Early Sale',
@@ -43,15 +41,12 @@ const cardConfig: CardConfig = {
     tooltip: 'No limits on the amount you can commit. Additional fee applies when claiming.',
   },
 }
-
 const SmallCard: React.FC<IfoCardProps> = ({ poolId, ifo, publicIfoData, walletIfoData, onApprove, enableStatus }) => {
   const { t } = useTranslation()
   const config = cardConfig[poolId]
-  const { hasProfile, isLoading: isProfileLoading } = useProfile()
+  const { hasProfile, isLoading: isProfileLoading } = {hasProfile: true,isLoading: true}
   const { targetRef, tooltip, tooltipVisible } = useTooltip(t(config.tooltip), { placement: 'bottom' })
-
   const isLoading = isProfileLoading || publicIfoData.status === 'idle'
-
   return (
     <>
       {tooltipVisible && tooltip}

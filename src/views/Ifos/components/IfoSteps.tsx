@@ -8,7 +8,6 @@ import { WalletIfoData } from 'hooks/ifo/types'
 import { useTranslation } from 'contexts/Localization'
 import useTokenBalance from 'hooks/useTokenBalance'
 import Container from 'components/layout/Container'
-import { useProfile } from 'state/hooks'
 import { getAddress } from 'utils/addressHelpers'
 
 interface Props {
@@ -31,11 +30,9 @@ const Wrapper = styled(Container)`
 
 const IfoSteps: React.FC<Props> = ({ ifo, walletIfoData }) => {
   const { poolBasic, poolUnlimited } = walletIfoData
-  const { hasProfile } = useProfile()
   const { t } = useTranslation()
   const { balance } = useTokenBalance(getAddress(ifo.currency.address))
   const stepsValidationStatus = [
-    hasProfile,
     balance.isGreaterThan(0),
     poolBasic.amountTokenCommittedInLP.isGreaterThan(0) || poolUnlimited.amountTokenCommittedInLP.isGreaterThan(0),
     poolBasic.hasClaimed || poolUnlimited.hasClaimed,

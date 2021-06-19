@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from 'react'
 import BigNumber from 'bignumber.js'
 import { BSC_BLOCK_TIME } from 'config'
 import { Ifo, IfoStatus, PoolIds } from 'config/constants/types'
-import { useBlock, useLpTokenPrice } from 'state/hooks'
+import { useBlock } from 'state/hooks'
 import { useIfoV1Contract } from 'hooks/useContract'
 import makeBatchRequest from 'utils/makeBatchRequest'
 import { BIG_ZERO } from 'utils/bigNumber'
@@ -14,7 +14,7 @@ import { getStatus } from '../helpers'
  */
 const useGetPublicIfoData = (ifo: Ifo): PublicIfoData => {
   const { address, releaseBlockNumber } = ifo
-  const lpTokenPriceInUsd = useLpTokenPrice(ifo.currency.symbol)
+  const lpTokenPriceInUsd = new BigNumber(1)  
   const [state, setState] = useState({
     status: 'idle' as IfoStatus,
     blocksRemaining: 0,

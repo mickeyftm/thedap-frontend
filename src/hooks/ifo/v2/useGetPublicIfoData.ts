@@ -2,8 +2,8 @@ import { useEffect, useState, useCallback } from 'react'
 import BigNumber from 'bignumber.js'
 import { BSC_BLOCK_TIME } from 'config'
 import { Ifo, IfoStatus } from 'config/constants/types'
-import { useBlock, useLpTokenPrice } from 'state/hooks'
-import { useIfoV2Contract } from 'hooks/useContract'
+import { useBlock } from 'state/hooks'
+import {  useIfoV2Contract } from 'hooks/useContract'
 import useRefresh from 'hooks/useRefresh'
 import makeBatchRequest from 'utils/makeBatchRequest'
 import { BIG_ZERO } from 'utils/bigNumber'
@@ -11,7 +11,9 @@ import { PublicIfoData, PoolCharacteristics } from '../types'
 import { getStatus } from '../helpers'
 
 // https://github.com/pancakeswap/pancake-contracts/blob/master/projects/ifo/contracts/IFOV2.sol#L431
+
 // 1,000,000,000 / 100
+
 const TAX_PRECISION = 10000000000
 
 const formatPool = (pool) => ({
@@ -28,7 +30,7 @@ const formatPool = (pool) => ({
  */
 const useGetPublicIfoData = (ifo: Ifo): PublicIfoData => {
   const { address, releaseBlockNumber } = ifo
-  const lpTokenPriceInUsd = useLpTokenPrice(ifo.currency.symbol)
+  const lpTokenPriceInUsd = new BigNumber(1)    
   const { fastRefresh } = useRefresh()
 
   const [state, setState] = useState({
