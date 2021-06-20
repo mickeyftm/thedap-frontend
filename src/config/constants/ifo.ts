@@ -15,20 +15,14 @@ export const ifos: Ifo[] = [
     name: 'metagamehub (MGH)',
     poolEarly: {
       saleAmount: '20,000,000 MGH',
-      raiseAmount: '$2,000,000',
-      cakeToBurn: '$0',
       distributionRatio: 0.4,
     },
     poolBasic: {
       saleAmount: '20,000,000 MGH',
-      raiseAmount: '$2,000,000',
-      cakeToBurn: '$0',
       distributionRatio: 0.4,
     },
     poolUnlimited: {
       saleAmount: '10,000,000 MGH',
-      raiseAmount: '$1,000,000',
-      cakeToBurn: '$0',
       distributionRatio: 0.2,
     },
     currency: usdtToken,

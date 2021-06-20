@@ -42,7 +42,6 @@ const ContributeModal: React.FC<Props> = ({
   const userPoolCharacteristics = walletIfoData[poolId]
 
   const { currency } = ifo
-  const { limitPerUserInLP } = publicPoolCharacteristics
   const { amountTokenCommittedInLP } = userPoolCharacteristics
   const { contract } = walletIfoData
   const [value, setValue] = useState('')
@@ -79,21 +78,16 @@ const ContributeModal: React.FC<Props> = ({
     })
 
   const maximumLpCommitable = (() => {
-    if (limitPerUserInLP.isGreaterThan(0)) {
-      return limitPerUserInLP.minus(amountTokenCommittedInLP).isLessThanOrEqualTo(userCurrencyBalance)
-        ? limitPerUserInLP
-        : userCurrencyBalance
-    }
     return userCurrencyBalance
   })()
 
   return (
     <Modal title={t('Contribute %symbol%', { symbol: currency.symbol })} onDismiss={onDismiss}>
       <ModalBody maxWidth="320px">
-        {limitPerUserInLP.isGreaterThan(0) && (
+        {userCurrencyBalance.isGreaterThan(0) && (
           <Flex justifyContent="space-between" mb="16px">
             <Text>{t('Max. LP token entry')}</Text>
-            <Text>{getBalanceNumber(limitPerUserInLP, currency.decimals)}</Text>
+            <Text>{getBalanceNumber(userCurrencyBalance, currency.decimals)}</Text>
           </Flex>
         )}
         <Flex justifyContent="space-between" mb="8px">

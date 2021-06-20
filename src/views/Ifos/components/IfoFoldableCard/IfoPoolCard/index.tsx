@@ -28,17 +28,17 @@ const cardConfig: CardConfig = {
   [PoolIds.poolEarly]: {
     title: 'Early Sale',
     variant: 'blue',
-    tooltip: 'Every person can only commit a limited amount, but may expect a higher return per token committed.',
+    tooltip: 'Early Auction with a fix price and distribution to the earliest buyers.',
   },
   [PoolIds.poolBasic]: {
     title: 'Basic Sale',
     variant: 'blue',
-    tooltip: 'Every person can only commit a limited amount, but may expect a higher return per token committed.',
+    tooltip: 'Basic Auction with a price ceiling and distribution to all participants.',
   },
   [PoolIds.poolUnlimited]: {
     title: 'Unlimited Sale',
     variant: 'violet',
-    tooltip: 'No limits on the amount you can commit. Additional fee applies when claiming.',
+    tooltip: 'Unlimited Auction with no starting price and distribution to all participants.',
   },
 }
 const SmallCard: React.FC<IfoCardProps> = ({ poolId, ifo, publicIfoData, walletIfoData, onApprove, enableStatus }) => {

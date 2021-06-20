@@ -4,12 +4,10 @@ import { IfoStatus, PoolIds } from 'config/constants/types'
 
 // PoolCharacteristics retrieved from the contract
 export interface PoolCharacteristics {
-  raisingAmountPool: BigNumber
   offeringAmountPool: BigNumber
-  limitPerUserInLP: BigNumber
-  taxRate: number
   totalAmountPool: BigNumber
-  sumTaxesOverflow: BigNumber
+  priceA: BigNumber
+  priceB: BigNumber
 }
 
 // IFO data unrelated to the user returned by useGetPublicIfoData
@@ -22,7 +20,6 @@ export interface PublicIfoData {
   startBlockNum: number
   endBlockNum: number
   currencyPriceInUSD: BigNumber
-  numberPoints: number
   fetchIfoData: () => void
   [PoolIds.poolEarly]?: PoolCharacteristics
   [PoolIds.poolBasic]?: PoolCharacteristics
@@ -34,7 +31,6 @@ export interface UserPoolCharacteristics {
   amountTokenCommittedInLP: BigNumber // @contract: amountPool
   offeringAmountInToken: BigNumber // @contract: userOfferingAmountPool
   refundingAmountInLP: BigNumber // @contract: userRefundingAmountPool
-  taxAmountInLP: BigNumber // @contract: userTaxAmountPool
   hasClaimed: boolean // @contract: claimedPool
   isPendingTx: boolean
 }

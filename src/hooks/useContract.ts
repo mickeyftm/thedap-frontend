@@ -2,7 +2,6 @@ import { useMemo } from 'react'
 import useWeb3 from 'hooks/useWeb3'
 import {
   getBep20Contract,
-  getIfoV1Contract,
   getIfoV2Contract,
   getPointCenterIfoContract,
   getClaimRefundContract,
@@ -14,10 +13,7 @@ import {
  * Helper hooks to get specific contracts (by ABI)
  */
 
-export const useIfoV1Contract = (address: string) => {
-  const web3 = useWeb3()
-  return useMemo(() => getIfoV1Contract(address, web3), [address, web3])
-}
+
 
 export const useIfoV2Contract = (address: string) => {
   const web3 = useWeb3()

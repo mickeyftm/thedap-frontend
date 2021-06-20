@@ -22,7 +22,6 @@ const ContributeButton: React.FC<Props> = ({ poolId, ifo, publicIfoData, walletI
   const publicPoolCharacteristics = publicIfoData[poolId]
   const userPoolCharacteristics = walletIfoData[poolId]
   const { isPendingTx, amountTokenCommittedInLP } = userPoolCharacteristics
-  const { limitPerUserInLP } = publicPoolCharacteristics
   const { t } = useTranslation()
   const { toastSuccess } = useToast()
   const { balance: userCurrencyBalance } = useTokenBalance(getAddress(ifo.currency.address))
@@ -50,8 +49,7 @@ const ContributeButton: React.FC<Props> = ({ poolId, ifo, publicIfoData, walletI
   const [onPresentGetLpModal] = useModal(<GetLpModal currency={ifo.currency} />, false)
 
   const isDisabled =
-    isPendingTx ||
-    (limitPerUserInLP.isGreaterThan(0) && amountTokenCommittedInLP.isGreaterThanOrEqualTo(limitPerUserInLP))
+    isPendingTx 
 
   return (
     <Button
