@@ -188,7 +188,6 @@ const IfoFoldableCard: React.FC<IfoFoldableCardProps> = ({ ifo, publicIfoData, w
               enableStatus={enableStatus}
             />
           </CardsWrapper>
-          <Achievement ifo={ifo} publicIfoData={publicIfoData} />
         </StyledCardBody>
         <StyledCardFooter>
           <Button variant="text" endIcon={<ChevronUpIcon color="primary" />} onClick={() => setIsVisible(false)}>
