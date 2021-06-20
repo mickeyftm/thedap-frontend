@@ -68,7 +68,6 @@ const useGetPublicIfoData = (ifo: Ifo): PublicIfoData => {
       contract.methods.viewPoolInformation(0).call,
       contract.methods.viewPoolInformation(1).call,
       contract.methods.viewPoolInformation(2).call,
-      contract.methods.numberPoints().call,
     ])) as [string, string, PoolCharacteristics,PoolCharacteristics, PoolCharacteristics]
 
     const poolEarlyFormatted = formatPool(poolEarly)
