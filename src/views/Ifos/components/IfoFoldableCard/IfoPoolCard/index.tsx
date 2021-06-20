@@ -20,14 +20,14 @@ interface IfoCardProps {
 interface CardConfig {
   [key: string]: {
     title: string
-    variant: 'blue' | 'violet'
+    variant: 'blue' | 'violet' | 'default'
     tooltip: string
   }
 }
 const cardConfig: CardConfig = {
   [PoolIds.poolEarly]: {
     title: 'Early Sale',
-    variant: 'blue',
+    variant: 'default',
     tooltip: 'Early Auction with a fix price and distribution to the earliest buyers.',
   },
   [PoolIds.poolBasic]: {
@@ -44,9 +44,8 @@ const cardConfig: CardConfig = {
 const SmallCard: React.FC<IfoCardProps> = ({ poolId, ifo, publicIfoData, walletIfoData, onApprove, enableStatus }) => {
   const { t } = useTranslation()
   const config = cardConfig[poolId]
-  const { hasProfile, isLoading: isProfileLoading } = {hasProfile: true,isLoading: true}
   const { targetRef, tooltip, tooltipVisible } = useTooltip(t(config.tooltip), { placement: 'bottom' })
-  const isLoading = isProfileLoading || publicIfoData.status === 'idle'
+  const isLoading =  publicIfoData.status === 'idle'
   return (
     <>
       {tooltipVisible && tooltip}
@@ -67,7 +66,6 @@ const SmallCard: React.FC<IfoCardProps> = ({ poolId, ifo, publicIfoData, walletI
             ifo={ifo}
             publicIfoData={publicIfoData}
             walletIfoData={walletIfoData}
-            hasProfile={hasProfile}
             isLoading={isLoading}
             onApprove={onApprove}
             enableStatus={enableStatus}
@@ -77,7 +75,6 @@ const SmallCard: React.FC<IfoCardProps> = ({ poolId, ifo, publicIfoData, walletI
             ifo={ifo}
             publicIfoData={publicIfoData}
             walletIfoData={walletIfoData}
-            hasProfile={hasProfile}
             isLoading={isLoading}
           />
           <IfoCardDetails poolId={poolId} ifo={ifo} publicIfoData={publicIfoData} />

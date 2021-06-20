@@ -42,7 +42,6 @@ interface IfoCardTokensProps {
   ifo: Ifo
   publicIfoData: PublicIfoData
   walletIfoData: WalletIfoData
-  hasProfile: boolean
   isLoading: boolean
   onApprove: () => Promise<any>
   enableStatus: EnableStatus
@@ -53,7 +52,6 @@ const IfoCardTokens: React.FC<IfoCardTokensProps> = ({
   ifo,
   publicIfoData,
   walletIfoData,
-  hasProfile,
   isLoading,
   onApprove,
   enableStatus,
@@ -79,16 +77,10 @@ const IfoCardTokens: React.FC<IfoCardTokensProps> = ({
     if (isLoading) {
       return <SkeletonCardTokens />
     }
-    if (account && !hasProfile) {
-      if (publicIfoData.status === 'finished') {
-        return <Text textAlign="center">{t('Activate PancakeSwap Profile to take part in next IFO‘s!')}</Text>
-      }
-      return <Text textAlign="center">{t('You need an active PancakeSwap Profile to take part in an IFO!')}</Text>
-    }
     if (publicIfoData.status === 'coming_soon') {
       return (
         <>
-          <TokenSection img="/images/bunny-placeholder.svg">
+          <TokenSection img={tokenImage}>
             <Label>{t('On sale')}</Label>
             <Value>{ifo[poolId].saleAmount}</Value>
           </TokenSection>

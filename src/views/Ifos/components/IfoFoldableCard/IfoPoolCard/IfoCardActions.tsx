@@ -15,29 +15,18 @@ interface Props {
   ifo: Ifo
   publicIfoData: PublicIfoData
   walletIfoData: WalletIfoData
-  hasProfile: boolean
   isLoading: boolean
 }
 
-const IfoCardActions: React.FC<Props> = ({ poolId, ifo, publicIfoData, walletIfoData, hasProfile, isLoading }) => {
+const IfoCardActions: React.FC<Props> = ({ poolId, ifo, publicIfoData, walletIfoData, isLoading }) => {
   const { t } = useTranslation()
   const { account } = useWeb3React()
   const userPoolCharacteristics = walletIfoData[poolId]
-
   if (isLoading) {
     return <SkeletonCardActions />
   }
-
   if (!account) {
     return <UnlockButton width="100%" />
-  }
-
-  if (!hasProfile) {
-    return (
-      <Button as={Link} to="/profile" width="100%">
-        {t('Activate your Profile')}
-      </Button>
-    )
   }
 
   return (
