@@ -10,7 +10,7 @@ const usdtToken: Token = {
 export const ifos: Ifo[] = [
   {
     id: 'metagamehub',
-    address: '0xE939550123070421C2b2bd93720de0b31D3c1B8a',
+    address: '0x310266845602738987DcAaAa1d83F60Acf5d64E5',
     isActive: true,
     name: 'metagamehub (MGH)',
     poolEarly: {

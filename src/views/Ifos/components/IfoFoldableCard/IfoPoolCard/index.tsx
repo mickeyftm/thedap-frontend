@@ -26,19 +26,19 @@ interface CardConfig {
 }
 const cardConfig: CardConfig = {
   [PoolIds.poolEarly]: {
-    title: 'Early Sale',
+    title: 'Early Pool',
     variant: 'default',
-    tooltip: 'Early Auction with a fix price and distribution to the earliest buyers.',
+    tooltip: 'Early Pool with a fix price and distribution to the earliest buyers.',
   },
   [PoolIds.poolBasic]: {
-    title: 'Basic Sale',
+    title: 'Basic Pool',
     variant: 'blue',
-    tooltip: 'Basic Auction with a price ceiling and distribution to all participants.',
+    tooltip: 'Basic Pool with a price ceiling and distribution to all participants.',
   },
   [PoolIds.poolUnlimited]: {
-    title: 'Unlimited Sale',
+    title: 'Unlimited Pool',
     variant: 'violet',
-    tooltip: 'Unlimited Auction with no starting price and distribution to all participants.',
+    tooltip: 'Unlimited Pool with no starting price and distribution to all participants.',
   },
 }
 const SmallCard: React.FC<IfoCardProps> = ({ poolId, ifo, publicIfoData, walletIfoData, onApprove, enableStatus }) => {

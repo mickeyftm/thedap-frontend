@@ -67,8 +67,8 @@ const useGetWalletIfoData = (ifo: Ifo): WalletIfoData => {
 
   const fetchIfoData = useCallback(async () => {
     const [userInfo, amounts] = await makeBatchRequest([
-      contract.methods.viewUserInfo(account, [0, 1]).call,
-      contract.methods.viewUserOfferingAndRefundingAmountsForPools(account, [0, 1]).call,
+      contract.methods.viewUserAmount(account, [0,1,2]).call,
+      contract.methods.viewUserOfferingAndRefundingAmountsForPools(account, [0,1,2]).call,
     ])
 
     setState((prevState) => ({
@@ -78,24 +78,21 @@ const useGetWalletIfoData = (ifo: Ifo): WalletIfoData => {
         amountTokenCommittedInLP: new BigNumber(userInfo[0][0]),
         offeringAmountInToken: new BigNumber(amounts[0][0]),
         refundingAmountInLP: new BigNumber(amounts[0][1]),
-        taxAmountInLP: new BigNumber(amounts[0][2]),
         hasClaimed: userInfo[1][0],
       },
       poolBasic: {
         ...prevState.poolBasic,
-        amountTokenCommittedInLP: new BigNumber(userInfo[0][0]),
-        offeringAmountInToken: new BigNumber(amounts[0][0]),
-        refundingAmountInLP: new BigNumber(amounts[0][1]),
-        taxAmountInLP: new BigNumber(amounts[0][2]),
-        hasClaimed: userInfo[1][0],
-      },
-      poolUnlimited: {
-        ...prevState.poolUnlimited,
         amountTokenCommittedInLP: new BigNumber(userInfo[0][1]),
         offeringAmountInToken: new BigNumber(amounts[1][0]),
         refundingAmountInLP: new BigNumber(amounts[1][1]),
-        taxAmountInLP: new BigNumber(amounts[1][2]),
         hasClaimed: userInfo[1][1],
+      },
+      poolUnlimited: {
+        ...prevState.poolUnlimited,
+        amountTokenCommittedInLP: new BigNumber(userInfo[0][2]),
+        offeringAmountInToken: new BigNumber(amounts[2][0]),
+        refundingAmountInLP: new BigNumber(amounts[2][1]),
+        hasClaimed: userInfo[1][2],
       },
     }))
   }, [account, contract])

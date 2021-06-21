@@ -43,7 +43,7 @@ const Achievement: React.FC<Props> = ({ ifo, publicIfoData }) => {
   return (
     <Container>
       <AchievementFlex isFinished={publicIfoData.status === 'finished'} alignItems="center" flexGrow={1}>
-        <Image src={`/images/achievements/ifo-${tokenName}.svg`} width={56} height={56} mr="8px" />
+        <Image src={`/images/tokens/${tokenName}.png`} width={156} height={56} mr="8px" />
       </AchievementFlex>
       <Flex alignItems="flex-end" flexDirection="column">
         <StyledLinkExternal href={ifo.articleUrl} mb="8px">

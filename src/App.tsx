@@ -13,7 +13,6 @@ import history from './routerHistory'
 
 // Route-based code splitting
 // Only pool is included in the main bundle because of it's the most visited page
-const Home = lazy(() => import('./views/Home'))
 const Ifos = lazy(() => import('./views/Ifos'))
 const NotFound = lazy(() => import('./views/NotFound'))
 /*
@@ -51,28 +50,13 @@ const App: React.FC = () => {
         <SuspenseWithChunkError fallback={<PageLoader />}>
           <Switch>
             <Route path="/" exact>
-              <Home />
-            </Route>
-            <Route path="/ido">
               <Ifos />
-              </Route>
-              {/*
-            <Route path="/profile">
-              <Profile />
             </Route>
-             Redirect 
-                        <Route path="/nft">
-              <Redirect to="/home" />
-            </Route>
-            */}
             {/* 404 */}
             <Route component={NotFound} />
           </Switch>
         </SuspenseWithChunkError>
       </Menu>
-      {/*
-        <EasterEgg iterations={2} />
-      */}
       <ToastListener />
     </Router>
   )

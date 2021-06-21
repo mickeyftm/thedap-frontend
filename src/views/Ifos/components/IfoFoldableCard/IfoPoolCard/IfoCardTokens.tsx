@@ -27,7 +27,7 @@ interface TokenSectionProps extends FlexProps {
 const TokenSection: React.FC<TokenSectionProps> = ({ img, children, ...props }) => {
   return (
     <Flex {...props}>
-      <Image src={img} width={32} height={32} mr="16px" />
+      <Image src={img} width={54} height={18} mr="16px" />
       <div>{children}</div>
     </Flex>
   )
@@ -104,7 +104,7 @@ const IfoCardTokens: React.FC<IfoCardTokensProps> = ({
     if (publicIfoData.status === 'live') {
       return (
         <>
-          <TokenSection img="/images/farms/cake-bnb.svg" mb="24px">
+          <TokenSection img="/images/tokens/usdt.png" mb="24px">
             <Label>{t('Your %symbol% committed', { symbol: currency.symbol })}</Label>
             <Value>{getBalanceNumber(userPoolCharacteristics.amountTokenCommittedInLP, currency.decimals)}</Value>
             <PercentageOfTotal

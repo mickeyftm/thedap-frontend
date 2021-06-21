@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import every from 'lodash/every'
 import { Stepper, Step, StepStatus, Card, CardBody, Heading, Text, Button, Link, OpenNewIcon } from '@thedac-space/thedap-uikit'
-import { BASE_ADD_LIQUIDITY_URL } from 'config'
 import { Ifo } from 'config/constants/types'
 import { WalletIfoData } from 'hooks/ifo/types'
 import { useTranslation } from 'contexts/Localization'
@@ -47,26 +46,25 @@ const IfoSteps: React.FC<Props> = ({ ifo, walletIfoData }) => {
   }
 
   const renderCardBody = (step: number) => {
+
     const isStepValid = stepsValidationStatus[step]
     switch (step) {
       case 0:
         return (
           <CardBody>
             <Heading as="h4" color="secondary" mb="16px">
-              {t('Conduct KYC')}
+              {t('Connect Wallet')}
             </Heading>
             <Text color="textSubtle" small mb="16px">
-              {t('You’ll need an active PancakeSwap Profile to take part in an IFO!')}
+              {t('You’ll need a MetaMask Wallet to participate.')}
             </Text>
             {isStepValid ? (
               <Text color="success" bold>
-                {t('Profile Active!')}
+                {t('Wallet Active')}
               </Text>
-            ) : (
-              <Button as={Link} href="/profile">
-                {t('Activate your Profile')}
-              </Button>
-            )}
+            ):(   <Text color="error" bold>
+            {t('Please connect your MetaMask Wallet.')}
+          </Text>)}
           </CardBody>
         )
       case 1:
@@ -76,28 +74,18 @@ const IfoSteps: React.FC<Props> = ({ ifo, walletIfoData }) => {
               {t('Get USDT tokens')}
             </Heading>
             <Text color="textSubtle" small>
-              {t('You’ll spend them to commit for MGH tokens.')}
+              {t('You’ll participate them to commit for a MGH DAO membership.')}
             </Text>
-            <Button
-              as={Link}
-              external
-              href={`${BASE_ADD_LIQUIDITY_URL}/BNB/0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82`}
-              endIcon={<OpenNewIcon color="white" />}
-              mt="16px"
-            >
-              {t('Get LP tokens')}
-            </Button>
           </CardBody>
         )
       case 2:
         return (
           <CardBody>
             <Heading as="h4" color="secondary" mb="16px">
-              {t('Commit USDT')}
+              {t('Participate USDT')}
             </Heading>
             <Text color="textSubtle" small>
-              {t('When the MGH private sale is live, you can “commit” your USDT tokens to buy the tokens being sold.')} <br />
-              {t('The minimum purchpase price is 1000 USDT')}
+              {t('When the MGH DAO private offering is live, you can participate your USDT for a membership.')} <br />
             </Text>
           </CardBody>
         )
@@ -105,11 +93,11 @@ const IfoSteps: React.FC<Props> = ({ ifo, walletIfoData }) => {
         return (
           <CardBody>
             <Heading as="h4" color="secondary" mb="16px">
-              {t('Claim your tokens')}
+              {t('Claim your membership')}
             </Heading>
             <Text color="textSubtle" small>
               {t(
-                'After the MGH private sale finished, you can claim any MGH tokens that you bought, and any unspent USDT will be returned to your wallet.',
+                'After the MGH private sale finished, you can claim any MGH tokens, and any unspent USDT will be returned to your wallet.',
               )}
             </Text>
           </CardBody>
@@ -122,8 +110,25 @@ const IfoSteps: React.FC<Props> = ({ ifo, walletIfoData }) => {
   return (
     <Wrapper>
       <Heading as="h2" scale="xl" color="secondary" mb="24px" textAlign="center">
-        {t('How to Take Part')}
+        {t('How to Participate')}
       </Heading>
+      <CardBody>
+    <Heading as="h4" color="secondary" mb="16px">
+      {t('Conduct KYC')}
+    </Heading>
+    <Text color="textSubtle" small mb="16px">
+      {t('You’ll need a successful KYC application to become a private member in MGH DAO')}
+    </Text>
+    <Button
+              as={Link}
+              external
+              href='https://metagamehub.io'
+              endIcon={<OpenNewIcon color="white" />}
+              mt="16px"
+            >
+              {t('KYC')}
+            </Button>
+    </CardBody>
       <Stepper>
         {stepsValidationStatus.map((_, index) => (
           // eslint-disable-next-line react/no-array-index-key

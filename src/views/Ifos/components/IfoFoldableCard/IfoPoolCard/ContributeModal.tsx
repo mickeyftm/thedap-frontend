@@ -86,7 +86,7 @@ const ContributeModal: React.FC<Props> = ({
       <ModalBody maxWidth="320px">
         {userCurrencyBalance.isGreaterThan(0) && (
           <Flex justifyContent="space-between" mb="16px">
-            <Text>{t('Max. LP token entry')}</Text>
+            <Text>{t('Max. USDT token entry')}</Text>
             <Text>{getBalanceNumber(userCurrencyBalance, currency.decimals)}</Text>
           </Flex>
         )}
@@ -94,7 +94,7 @@ const ContributeModal: React.FC<Props> = ({
           <Text>{t('Commit')}:</Text>
           <Flex flexGrow={1} justifyContent="flex-end">
             <Image
-              src={`/images/farms/${currency.symbol.split(' ')[0].toLocaleLowerCase()}.svg`}
+              src={`/images/tokens/${currency.symbol.split(' ')[0].toLocaleLowerCase()}.svg`}
               width={24}
               height={24}
             />
@@ -128,7 +128,7 @@ const ContributeModal: React.FC<Props> = ({
         </Flex>
         <Text color="textSubtle" fontSize="12px" mb="24px">
           {t(
-            'If you don’t commit enough LP tokens, you may not receive any IFO tokens at all and will only receive a full refund of your LP tokens.',
+            'If you don’t commit enough USDT tokens, you may not receive any MGH tokens at all and will only receive a full refund of your USDT tokens.',
           )}
         </Text>
         <ApproveConfirmButtons
