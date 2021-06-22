@@ -28,13 +28,13 @@ const Wrapper = styled(Container)`
 `
 
 const IfoSteps: React.FC<Props> = ({ ifo, walletIfoData }) => {
-  const { poolBasic, poolUnlimited } = walletIfoData
+  const { poolEarly, poolBasic, poolUnlimited } = walletIfoData
   const { t } = useTranslation()
   const { balance } = useTokenBalance(getAddress(ifo.currency.address))
   const stepsValidationStatus = [
     balance.isGreaterThan(0),
-    poolBasic.amountTokenCommittedInLP.isGreaterThan(0) || poolUnlimited.amountTokenCommittedInLP.isGreaterThan(0),
-    poolBasic.hasClaimed || poolUnlimited.hasClaimed,
+    poolEarly.amountTokenCommittedInLP.isGreaterThan(0) || poolBasic.amountTokenCommittedInLP.isGreaterThan(0) || poolUnlimited.amountTokenCommittedInLP.isGreaterThan(0),
+    poolEarly.hasClaimed || poolBasic.hasClaimed || poolUnlimited.hasClaimed,
   ]
 
   const getStatusProp = (index: number): StepStatus => {
@@ -60,10 +60,10 @@ const IfoSteps: React.FC<Props> = ({ ifo, walletIfoData }) => {
             </Text>
             {isStepValid ? (
               <Text color="success" bold>
-                {t('Wallet Active')}
+                {t('USDT ready')}
               </Text>
             ):(   <Text color="error" bold>
-            {t('Please connect your MetaMask Wallet.')}
+            {t('You’ll need USDT')}
           </Text>)}
           </CardBody>
         )
@@ -71,10 +71,10 @@ const IfoSteps: React.FC<Props> = ({ ifo, walletIfoData }) => {
         return (
           <CardBody>
             <Heading as="h4" color="secondary" mb="16px">
-              {t('Get USDT tokens')}
+              {t('Participate')}
             </Heading>
             <Text color="textSubtle" small>
-              {t('You’ll participate them to commit for a MGH DAO membership.')}
+              {t('You can participate USDT for a MGH DAO membership.')}
             </Text>
           </CardBody>
         )
@@ -82,23 +82,10 @@ const IfoSteps: React.FC<Props> = ({ ifo, walletIfoData }) => {
         return (
           <CardBody>
             <Heading as="h4" color="secondary" mb="16px">
-              {t('Participate USDT')}
-            </Heading>
-            <Text color="textSubtle" small>
-              {t('When the MGH DAO private offering is live, you can participate your USDT for a membership.')} <br />
-            </Text>
-          </CardBody>
-        )
-      case 3:
-        return (
-          <CardBody>
-            <Heading as="h4" color="secondary" mb="16px">
               {t('Claim your membership')}
             </Heading>
             <Text color="textSubtle" small>
-              {t(
-                'After the MGH private sale finished, you can claim any MGH tokens, and any unspent USDT will be returned to your wallet.',
-              )}
+              {t('After the MGH private sale finished, you can claim any MGH tokens, and any unspent USDT will be returned to your wallet.')} <br />
             </Text>
           </CardBody>
         )

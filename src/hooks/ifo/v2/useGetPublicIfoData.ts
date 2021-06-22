@@ -18,9 +18,9 @@ const TAX_PRECISION = 10000000000
 
 const formatPool = (pool) => ({
   offeringAmountPool: new BigNumber(pool[0]),
-  totalAmountPool: new BigNumber(pool[1]),
-  priceA: new BigNumber(pool[2]),
-  priceB: new BigNumber(pool[3]),
+  priceA: new BigNumber(pool[1]),
+  priceB: new BigNumber(pool[2]),
+  totalAmountPool: new BigNumber(pool[3]),
 })
 
 /**

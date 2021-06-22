@@ -45,6 +45,8 @@ const IfoCardDetails: React.FC<IfoCardDetailsProps> = ({ poolId, ifo, publicIfoD
   const priceA = 1/ getBalanceNumber(poolCharacteristic.priceA, ifo.currency.decimals)
   const priceB = 1/ getBalanceNumber(poolCharacteristic.priceB, ifo.currency.decimals)
   const priceC = totalAmountPool / offeringAmountPool
+  let priceD = priceC 
+  if(priceD<priceA){priceD=priceA}else if(priceD>priceB){priceD=priceB}
 
   const totalCommittedPercent = poolCharacteristic.totalAmountPool
     .div(poolCharacteristic.offeringAmountPool)
@@ -72,19 +74,13 @@ const IfoCardDetails: React.FC<IfoCardDetailsProps> = ({ poolId, ifo, publicIfoD
     if (status === 'live') {
       return (
         <>
-          {poolId === PoolIds.poolEarly && <FooterEntry label={t('offeringAmountPool')} value={offeringAmountPool} />}
-          {poolId === PoolIds.poolEarly && <FooterEntry label={t('priceA')} value={priceA} />}
-          {poolId === PoolIds.poolEarly && <FooterEntry label={t('priceB')} value={priceB} />}
-          {poolId === PoolIds.poolEarly && <FooterEntry label={t('priceC')} value={priceC} />}
-          {poolId === PoolIds.poolBasic && <FooterEntry label={t('offeringAmountPool')} value={offeringAmountPool} />}
-          {poolId === PoolIds.poolBasic && <FooterEntry label={t('priceA')} value={priceA} />}
-          {poolId === PoolIds.poolBasic && <FooterEntry label={t('priceB')} value={priceB} />}
-          {poolId === PoolIds.poolBasic && <FooterEntry label={t('priceC')} value={priceC} />}
-          {poolId === PoolIds.poolUnlimited && <FooterEntry label={t('offeringAmountPool')} value={offeringAmountPool} />}
-          {poolId === PoolIds.poolUnlimited && <FooterEntry label={t('priceA')} value={priceA} />}
-          {poolId === PoolIds.poolUnlimited && <FooterEntry label={t('priceB')} value={priceB} />}
-          {poolId === PoolIds.poolUnlimited && <FooterEntry label={t('priceC')} value={priceC} />}
-          <FooterEntry label={t('Total committed:')} value={currencyPriceInUSD.gt(0) ? totalCommitted : null} />
+          <FooterEntry label={t('USDT participated:')} value={currencyPriceInUSD.gt(0) ? totalCommitted : null} />
+          <FooterEntry label={t('MGH offered:')} value={offeringAmountPool} />
+          {poolId === PoolIds.poolEarly && <FooterEntry label={t('fix.price')} value={priceA} />}
+          {poolId === PoolIds.poolBasic && <FooterEntry label={t('now.price')} value={priceD} />}
+          {poolId === PoolIds.poolBasic && <FooterEntry label={t('min.price')} value={priceA} />}
+          {poolId === PoolIds.poolBasic && <FooterEntry label={t('max.price')} value={priceB} />}
+          {poolId === PoolIds.poolUnlimited && <FooterEntry label={t('now.price')} value={priceC} />}
         </>
       )
     }

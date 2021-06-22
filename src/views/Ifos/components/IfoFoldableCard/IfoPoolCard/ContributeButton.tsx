@@ -30,7 +30,7 @@ const ContributeButton: React.FC<Props> = ({ poolId, ifo, publicIfoData, walletI
     await Promise.all([publicIfoData.fetchIfoData(), walletIfoData.fetchIfoData()])
     toastSuccess(
       t('Success!'),
-      t('You have contributed %amount% CAKE-BNB LP tokens to this IFO!', { amount: getBalanceNumber(amount) }),
+      t('You have participated %amount% USDT tokens!', { amount: getBalanceNumber(amount) }),
     )
   }
 
@@ -57,7 +57,7 @@ const ContributeButton: React.FC<Props> = ({ poolId, ifo, publicIfoData, walletI
       width="100%"
       disabled={isDisabled}
     >
-      {isDisabled ? t('Max. Committed') : t('Commit LP Tokens')}
+      {isDisabled ? t('pool full') : t('USDT participation')}
     </Button>
   )
 }
