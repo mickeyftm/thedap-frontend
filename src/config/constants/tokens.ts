@@ -6,7 +6,7 @@ const tokens = {
   usdt: {
     symbol: 'USDT',
     address: {
-      1: '0xdac17f958d2ee523a2206206994597c13d831ec7',
+      1: '0x1043A212e1669B1c776F98c0aB6Da160e37443c3',
       3: '',
     },
     decimals: 6,
@@ -15,7 +15,7 @@ const tokens = {
   mgh: {
     symbol: 'MGH',
     address: {
-      1: '0x8765b1a0eb57ca49be7eacd35b24a574d0203656',
+      1: '0xD0EC69Bd238fa9818c3F6C147c60fAD2d04eb653',
       3: '',
     },
     decimals: 18,
