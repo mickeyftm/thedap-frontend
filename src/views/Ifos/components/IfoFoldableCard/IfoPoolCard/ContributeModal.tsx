@@ -67,8 +67,16 @@ const ContributeModal: React.FC<Props> = ({
           .send({ from: account, gasPrice })
       },
       onConfirm: () => {
+        let pid
+      if(poolId === PoolIds.poolEarly){
+        pid = 0
+      }else if(poolId === PoolIds.poolBasic){
+        pid = 1
+      }else if(poolId === PoolIds.poolUnlimited){
+        pid = 2
+      }
         return contract.methods
-          .depositPool(valueWithTokenDecimals.toString(), poolId === PoolIds.poolBasic ? 0 : 1)
+          .depositPool(valueWithTokenDecimals.toString(), pid)
           .send({ from: account, gasPrice })
       },
       onSuccess: async () => {

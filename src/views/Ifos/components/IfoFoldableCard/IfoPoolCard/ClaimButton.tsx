@@ -23,12 +23,16 @@ const ClaimButton: React.FC<Props> = ({ poolId, ifoVersion, walletIfoData }) => 
   const handleClaim = async () => {
     try {
       setPendingTx(true)
-
-      if (ifoVersion === 1) {
-        await walletIfoData.contract.methods.harvest().send({ from: account })
-      } else {
-        await walletIfoData.contract.methods.harvestPool(poolId === PoolIds.poolBasic ? 0 : 1).send({ from: account })
+      let pid
+      if(poolId === PoolIds.poolEarly){
+        pid = 0
+      }else if(poolId === PoolIds.poolBasic){
+        pid = 1
+      }else if(poolId === PoolIds.poolUnlimited){
+        pid = 2
       }
+        await walletIfoData.contract.methods.harvestPool(pid).send({ from: account })
+
 
       walletIfoData.setIsClaimed(poolId)
       toastSuccess(t('Success!'), t('You have successfully claimed your rewards.'))

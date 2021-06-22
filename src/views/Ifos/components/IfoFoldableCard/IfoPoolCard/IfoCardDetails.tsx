@@ -62,12 +62,16 @@ const IfoCardDetails: React.FC<IfoCardDetailsProps> = ({ poolId, ifo, publicIfoD
     if (status === 'coming_soon') {
       return (
         <>
-          {poolId === PoolIds.poolBasic && <FooterEntry label={t('MGh available')} value={offeringAmountPool} />}
-          <FooterEntry label={t('Funds to raise:')} value={ifo[poolId].saleAmount} />
-          <FooterEntry
+          <FooterEntry label={t('MGH offered:')} value={offeringAmountPool} />
+          <FooterEntry label={t('USDT to raise:')} value={ifo[poolId].saleAmount} />
+          {poolId === PoolIds.poolEarly &&<FooterEntry
             label={t('Price per %symbol%:', { symbol: ifo.token.symbol })}
             value={`$${ifo.tokenOfferingPrice}`}
-          />
+          />}
+          {poolId === PoolIds.poolBasic &&<FooterEntry
+            label={t('Auction Start Price per %symbol%:', { symbol: ifo.token.symbol })}
+            value={`$${ifo.tokenOfferingPrice}`}
+          />}
         </>
       )
     }
@@ -87,15 +91,11 @@ const IfoCardDetails: React.FC<IfoCardDetailsProps> = ({ poolId, ifo, publicIfoD
     if (status === 'finished') {
       return (
         <>
-          {poolId === PoolIds.poolEarly && <FooterEntry label={t('offeringAmountPool')} value={offeringAmountPool} />}
-          {poolId === PoolIds.poolBasic && <FooterEntry label={t('offeringAmountPool')} value={offeringAmountPool} />}
-          {poolId === PoolIds.poolUnlimited && <FooterEntry label={t('offeringAmountPool')} value={offeringAmountPool} />}
-          <FooterEntry label={t('Total committed:')} value={currencyPriceInUSD.gt(0) ? totalCommitted : null} />
-          <FooterEntry label={t('Funds to raise:')} value={ifo[poolId].saleAmount} />
-          <FooterEntry
-            label={t('Price per %symbol%:', { symbol: ifo.token.symbol })}
-            value={`$${ifo.tokenOfferingPrice ? ifo.tokenOfferingPrice : '?'}`}
-          />
+          <FooterEntry label={t('USDT participated:')} value={currencyPriceInUSD.gt(0) ? totalCommitted : null} />
+          <FooterEntry label={t('MGH offered:')} value={offeringAmountPool} />
+          {poolId === PoolIds.poolEarly && <FooterEntry label={t('price')} value={priceA} />}
+          {poolId === PoolIds.poolBasic && <FooterEntry label={t('price')} value={priceD} />}
+          {poolId === PoolIds.poolUnlimited && <FooterEntry label={t('price')} value={priceC} />}
         </>
       )
     }

@@ -122,12 +122,12 @@ const IfoCardTokens: React.FC<IfoCardTokensProps> = ({
     if (publicIfoData.status === 'finished') {
       return userPoolCharacteristics.amountTokenCommittedInLP.isEqualTo(0) ? (
         <Flex flexDirection="column" alignItems="center">
-          <Image src="/images/bunny-placeholder.svg" width={80} height={80} mb="16px" />
-          <Text>{t('You didn’t participate in this sale!')}</Text>
+          <Image src={tokenImage} width={80} height={35} mb="16px" />
+          <Text>{t('You didn’t participate!')}</Text>
         </Flex>
       ) : (
         <>
-          <TokenSection img="/images/farms/cake-bnb.svg" mb="24px">
+          <TokenSection img={tokenImage} mb="24px">
             <Label>
               {t(hasClaimed ? 'Your %symbol% RECLAIMED' : 'Your %symbol% TO RECLAIM', { symbol: currency.symbol })}
             </Label>

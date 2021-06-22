@@ -4,7 +4,7 @@ import { Ifo, Token } from './types'
 const usdtToken: Token = {
   symbol: tokens.usdt.symbol,
   address: tokens.usdt.address,
-  decimals: 18,
+  decimals: 6,
 }
 
 export const ifos: Ifo[] = [
