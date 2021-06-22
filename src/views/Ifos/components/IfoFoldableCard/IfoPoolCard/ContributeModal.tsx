@@ -42,7 +42,6 @@ const ContributeModal: React.FC<Props> = ({
   const userPoolCharacteristics = walletIfoData[poolId]
 
   const { currency } = ifo
-  const { limitPerUserInLP } = publicPoolCharacteristics
   const { amountTokenCommittedInLP } = userPoolCharacteristics
   const { contract } = walletIfoData
   const [value, setValue] = useState('')
@@ -68,8 +67,16 @@ const ContributeModal: React.FC<Props> = ({
           .send({ from: account, gasPrice })
       },
       onConfirm: () => {
+        let pid
+      if(poolId === PoolIds.poolEarly){
+        pid = 0
+      }else if(poolId === PoolIds.poolBasic){
+        pid = 1
+      }else if(poolId === PoolIds.poolUnlimited){
+        pid = 2
+      }
         return contract.methods
-          .depositPool(valueWithTokenDecimals.toString(), poolId === PoolIds.poolBasic ? 0 : 1)
+          .depositPool(valueWithTokenDecimals.toString(), pid)
           .send({ from: account, gasPrice })
       },
       onSuccess: async () => {
@@ -79,28 +86,23 @@ const ContributeModal: React.FC<Props> = ({
     })
 
   const maximumLpCommitable = (() => {
-    if (limitPerUserInLP.isGreaterThan(0)) {
-      return limitPerUserInLP.minus(amountTokenCommittedInLP).isLessThanOrEqualTo(userCurrencyBalance)
-        ? limitPerUserInLP
-        : userCurrencyBalance
-    }
     return userCurrencyBalance
   })()
 
   return (
     <Modal title={t('Contribute %symbol%', { symbol: currency.symbol })} onDismiss={onDismiss}>
       <ModalBody maxWidth="320px">
-        {limitPerUserInLP.isGreaterThan(0) && (
+        {userCurrencyBalance.isGreaterThan(0) && (
           <Flex justifyContent="space-between" mb="16px">
-            <Text>{t('Max. LP token entry')}</Text>
-            <Text>{getBalanceNumber(limitPerUserInLP, currency.decimals)}</Text>
+            <Text>{t('Max. USDT token entry')}</Text>
+            <Text>{getBalanceNumber(userCurrencyBalance, currency.decimals)}</Text>
           </Flex>
         )}
         <Flex justifyContent="space-between" mb="8px">
           <Text>{t('Commit')}:</Text>
           <Flex flexGrow={1} justifyContent="flex-end">
             <Image
-              src={`/images/farms/${currency.symbol.split(' ')[0].toLocaleLowerCase()}.svg`}
+              src={`/images/tokens/${currency.symbol.split(' ')[0].toLocaleLowerCase()}.svg`}
               width={24}
               height={24}
             />
@@ -134,7 +136,7 @@ const ContributeModal: React.FC<Props> = ({
         </Flex>
         <Text color="textSubtle" fontSize="12px" mb="24px">
           {t(
-            'If you don’t commit enough LP tokens, you may not receive any IFO tokens at all and will only receive a full refund of your LP tokens.',
+            'If you don’t commit enough USDT tokens, you may not receive any MGH tokens at all and will only receive a full refund of your USDT tokens.',
           )}
         </Text>
         <ApproveConfirmButtons

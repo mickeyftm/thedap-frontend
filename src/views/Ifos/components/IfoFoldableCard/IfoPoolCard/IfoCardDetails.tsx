@@ -40,15 +40,20 @@ const IfoCardDetails: React.FC<IfoCardDetailsProps> = ({ poolId, ifo, publicIfoD
   const poolCharacteristic = publicIfoData[poolId]
 
   /* Format start */
-  const maxLpTokens = getBalanceNumber(poolCharacteristic.limitPerUserInLP, ifo.currency.decimals)
-  const taxRate = `${poolCharacteristic.taxRate}%`
+  const offeringAmountPool = getBalanceNumber(poolCharacteristic.offeringAmountPool, ifo.currency.decimals)
+  const totalAmountPool = getBalanceNumber(poolCharacteristic.totalAmountPool, ifo.currency.decimals)
+  const priceA = 1/ getBalanceNumber(poolCharacteristic.priceA, ifo.currency.decimals)
+  const priceB = 1/ getBalanceNumber(poolCharacteristic.priceB, ifo.currency.decimals)
+  const priceC = totalAmountPool / offeringAmountPool
+  let priceD = priceC 
+  if(priceD<priceA){priceD=priceA}else if(priceD>priceB){priceD=priceB}
 
   const totalCommittedPercent = poolCharacteristic.totalAmountPool
-    .div(poolCharacteristic.raisingAmountPool)
+    .div(poolCharacteristic.offeringAmountPool)
     .times(100)
     .toFixed(2)
-  const totalLPCommitted = getBalanceNumber(poolCharacteristic.totalAmountPool, ifo.currency.decimals)
-  const totalLPCommittedInUSD = currencyPriceInUSD.times(totalLPCommitted)
+
+  const totalLPCommittedInUSD = currencyPriceInUSD.times(totalAmountPool)
   const totalCommitted = `~$${formatNumber(totalLPCommittedInUSD.toNumber())} (${totalCommittedPercent}%)`
 
   /* Format end */
@@ -57,37 +62,40 @@ const IfoCardDetails: React.FC<IfoCardDetailsProps> = ({ poolId, ifo, publicIfoD
     if (status === 'coming_soon') {
       return (
         <>
-          {poolId === PoolIds.poolBasic && <FooterEntry label={t('Max. LP token entry')} value={maxLpTokens} />}
-          <FooterEntry label={t('Funds to raise:')} value={ifo[poolId].raiseAmount} />
-          <FooterEntry label={t('CAKE to burn:')} value={ifo[poolId].cakeToBurn} />
-          <FooterEntry
+          <FooterEntry label={t('MGH offered:')} value={offeringAmountPool} />
+          <FooterEntry label={t('USDT to raise:')} value={ifo[poolId].saleAmount} />
+          {poolId === PoolIds.poolEarly &&<FooterEntry
             label={t('Price per %symbol%:', { symbol: ifo.token.symbol })}
             value={`$${ifo.tokenOfferingPrice}`}
-          />
+          />}
+          {poolId === PoolIds.poolBasic &&<FooterEntry
+            label={t('Auction Start Price per %symbol%:', { symbol: ifo.token.symbol })}
+            value={`$${ifo.tokenOfferingPrice}`}
+          />}
         </>
       )
     }
     if (status === 'live') {
       return (
         <>
-          {poolId === PoolIds.poolBasic && <FooterEntry label={t('Max. LP token entry')} value={maxLpTokens} />}
-          {poolId === PoolIds.poolUnlimited && <FooterEntry label={t('Additional fee:')} value={taxRate} />}
-          <FooterEntry label={t('Total committed:')} value={currencyPriceInUSD.gt(0) ? totalCommitted : null} />
+          <FooterEntry label={t('USDT participated:')} value={currencyPriceInUSD.gt(0) ? totalCommitted : null} />
+          <FooterEntry label={t('MGH offered:')} value={offeringAmountPool} />
+          {poolId === PoolIds.poolEarly && <FooterEntry label={t('fix.price')} value={priceA} />}
+          {poolId === PoolIds.poolBasic && <FooterEntry label={t('now.price')} value={priceD} />}
+          {poolId === PoolIds.poolBasic && <FooterEntry label={t('min.price')} value={priceA} />}
+          {poolId === PoolIds.poolBasic && <FooterEntry label={t('max.price')} value={priceB} />}
+          {poolId === PoolIds.poolUnlimited && <FooterEntry label={t('now.price')} value={priceC} />}
         </>
       )
     }
     if (status === 'finished') {
       return (
         <>
-          {poolId === PoolIds.poolBasic && <FooterEntry label={t('Max. LP token entry')} value={maxLpTokens} />}
-          {poolId === PoolIds.poolUnlimited && <FooterEntry label={t('Additional fee:')} value={taxRate} />}
-          <FooterEntry label={t('Total committed:')} value={currencyPriceInUSD.gt(0) ? totalCommitted : null} />
-          <FooterEntry label={t('Funds to raise:')} value={ifo[poolId].raiseAmount} />
-          <FooterEntry label={t('CAKE to burn:')} value={ifo[poolId].cakeToBurn} />
-          <FooterEntry
-            label={t('Price per %symbol%:', { symbol: ifo.token.symbol })}
-            value={`$${ifo.tokenOfferingPrice ? ifo.tokenOfferingPrice : '?'}`}
-          />
+          <FooterEntry label={t('USDT participated:')} value={currencyPriceInUSD.gt(0) ? totalCommitted : null} />
+          <FooterEntry label={t('MGH offered:')} value={offeringAmountPool} />
+          {poolId === PoolIds.poolEarly && <FooterEntry label={t('price')} value={priceA} />}
+          {poolId === PoolIds.poolBasic && <FooterEntry label={t('price')} value={priceD} />}
+          {poolId === PoolIds.poolUnlimited && <FooterEntry label={t('price')} value={priceC} />}
         </>
       )
     }

@@ -27,7 +27,7 @@ interface TokenSectionProps extends FlexProps {
 const TokenSection: React.FC<TokenSectionProps> = ({ img, children, ...props }) => {
   return (
     <Flex {...props}>
-      <Image src={img} width={32} height={32} mr="16px" />
+      <Image src={img} width={54} height={18} mr="16px" />
       <div>{children}</div>
     </Flex>
   )
@@ -42,7 +42,6 @@ interface IfoCardTokensProps {
   ifo: Ifo
   publicIfoData: PublicIfoData
   walletIfoData: WalletIfoData
-  hasProfile: boolean
   isLoading: boolean
   onApprove: () => Promise<any>
   enableStatus: EnableStatus
@@ -53,7 +52,6 @@ const IfoCardTokens: React.FC<IfoCardTokensProps> = ({
   ifo,
   publicIfoData,
   walletIfoData,
-  hasProfile,
   isLoading,
   onApprove,
   enableStatus,
@@ -79,16 +77,10 @@ const IfoCardTokens: React.FC<IfoCardTokensProps> = ({
     if (isLoading) {
       return <SkeletonCardTokens />
     }
-    if (account && !hasProfile) {
-      if (publicIfoData.status === 'finished') {
-        return <Text textAlign="center">{t('Activate PancakeSwap Profile to take part in next IFO‘s!')}</Text>
-      }
-      return <Text textAlign="center">{t('You need an active PancakeSwap Profile to take part in an IFO!')}</Text>
-    }
     if (publicIfoData.status === 'coming_soon') {
       return (
         <>
-          <TokenSection img="/images/bunny-placeholder.svg">
+          <TokenSection img={tokenImage}>
             <Label>{t('On sale')}</Label>
             <Value>{ifo[poolId].saleAmount}</Value>
           </TokenSection>
@@ -112,7 +104,7 @@ const IfoCardTokens: React.FC<IfoCardTokensProps> = ({
     if (publicIfoData.status === 'live') {
       return (
         <>
-          <TokenSection img="/images/farms/cake-bnb.svg" mb="24px">
+          <TokenSection img="/images/tokens/usdt.png" mb="24px">
             <Label>{t('Your %symbol% committed', { symbol: currency.symbol })}</Label>
             <Value>{getBalanceNumber(userPoolCharacteristics.amountTokenCommittedInLP, currency.decimals)}</Value>
             <PercentageOfTotal
@@ -130,12 +122,12 @@ const IfoCardTokens: React.FC<IfoCardTokensProps> = ({
     if (publicIfoData.status === 'finished') {
       return userPoolCharacteristics.amountTokenCommittedInLP.isEqualTo(0) ? (
         <Flex flexDirection="column" alignItems="center">
-          <Image src="/images/bunny-placeholder.svg" width={80} height={80} mb="16px" />
-          <Text>{t('You didn’t participate in this sale!')}</Text>
+          <Image src={tokenImage} width={80} height={35} mb="16px" />
+          <Text>{t('You didn’t participate!')}</Text>
         </Flex>
       ) : (
         <>
-          <TokenSection img="/images/farms/cake-bnb.svg" mb="24px">
+          <TokenSection img={tokenImage} mb="24px">
             <Label>
               {t(hasClaimed ? 'Your %symbol% RECLAIMED' : 'Your %symbol% TO RECLAIM', { symbol: currency.symbol })}
             </Label>

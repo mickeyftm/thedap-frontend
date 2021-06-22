@@ -1,8 +1,8 @@
 import { TranslatableText } from 'state/types'
 
 export interface Address {
-  97?: string
-  56: string
+  3?: string
+  1: string
 }
 
 export interface Token {
@@ -23,8 +23,6 @@ export type IfoStatus = 'idle' | 'coming_soon' | 'live' | 'finished'
 
 interface IfoPoolInfo {
   saleAmount: string
-  raiseAmount: string
-  cakeToBurn: string
   distributionRatio: number // Range [0-1]
 }
 

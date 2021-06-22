@@ -2,7 +2,6 @@ import React from 'react'
 import { useTranslation } from 'contexts/Localization'
 import { Card, CardBody, CardHeader, Text, useTooltip, HelpIcon, Flex } from '@thedac-space/thedap-uikit'
 import { Ifo, PoolIds } from 'config/constants/types'
-import { useProfile } from 'state/hooks'
 import { PublicIfoData, WalletIfoData } from 'hooks/ifo/types'
 import { EnableStatus } from '../types'
 import IfoCardTokens from './IfoCardTokens'
@@ -21,37 +20,32 @@ interface IfoCardProps {
 interface CardConfig {
   [key: string]: {
     title: string
-    variant: 'blue' | 'violet'
+    variant: 'blue' | 'violet' | 'default'
     tooltip: string
   }
 }
-
 const cardConfig: CardConfig = {
   [PoolIds.poolEarly]: {
-    title: 'Early Sale',
-    variant: 'blue',
-    tooltip: 'Every person can only commit a limited amount, but may expect a higher return per token committed.',
+    title: 'Early Pool',
+    variant: 'default',
+    tooltip: 'Early Pool with a fix price and distribution to the earliest buyers.',
   },
   [PoolIds.poolBasic]: {
-    title: 'Basic Sale',
+    title: 'Basic Pool',
     variant: 'blue',
-    tooltip: 'Every person can only commit a limited amount, but may expect a higher return per token committed.',
+    tooltip: 'Basic Pool with a price ceiling and distribution to all participants.',
   },
   [PoolIds.poolUnlimited]: {
-    title: 'Unlimited Sale',
+    title: 'Unlimited Pool',
     variant: 'violet',
-    tooltip: 'No limits on the amount you can commit. Additional fee applies when claiming.',
+    tooltip: 'Unlimited Pool with no starting price and distribution to all participants.',
   },
 }
-
 const SmallCard: React.FC<IfoCardProps> = ({ poolId, ifo, publicIfoData, walletIfoData, onApprove, enableStatus }) => {
   const { t } = useTranslation()
   const config = cardConfig[poolId]
-  const { hasProfile, isLoading: isProfileLoading } = useProfile()
   const { targetRef, tooltip, tooltipVisible } = useTooltip(t(config.tooltip), { placement: 'bottom' })
-
-  const isLoading = isProfileLoading || publicIfoData.status === 'idle'
-
+  const isLoading =  publicIfoData.status === 'idle'
   return (
     <>
       {tooltipVisible && tooltip}
@@ -72,7 +66,6 @@ const SmallCard: React.FC<IfoCardProps> = ({ poolId, ifo, publicIfoData, walletI
             ifo={ifo}
             publicIfoData={publicIfoData}
             walletIfoData={walletIfoData}
-            hasProfile={hasProfile}
             isLoading={isLoading}
             onApprove={onApprove}
             enableStatus={enableStatus}
@@ -82,7 +75,6 @@ const SmallCard: React.FC<IfoCardProps> = ({ poolId, ifo, publicIfoData, walletI
             ifo={ifo}
             publicIfoData={publicIfoData}
             walletIfoData={walletIfoData}
-            hasProfile={hasProfile}
             isLoading={isLoading}
           />
           <IfoCardDetails poolId={poolId} ifo={ifo} publicIfoData={publicIfoData} />

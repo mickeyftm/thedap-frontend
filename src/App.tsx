@@ -3,23 +3,21 @@ import { Router, Redirect, Route, Switch } from 'react-router-dom'
 import { ResetCSS } from '@thedac-space/thedap-uikit'
 import BigNumber from 'bignumber.js'
 import useEagerConnect from 'hooks/useEagerConnect'
-import { usePollCoreFarmData, useFetchProfile, usePollBlockNumber } from 'state/hooks'
+import {  usePollBlockNumber } from 'state/hooks'
 import GlobalStyle from './style/Global'
 import Menu from './components/Menu'
 import SuspenseWithChunkError from './components/SuspenseWithChunkError'
 import ToastListener from './components/ToastListener'
 import PageLoader from './components/PageLoader'
-import EasterEgg from './components/EasterEgg'
-import Pools from './views/Pools'
 import history from './routerHistory'
 
 // Route-based code splitting
 // Only pool is included in the main bundle because of it's the most visited page
-const Home = lazy(() => import('./views/Home'))
 const Ifos = lazy(() => import('./views/Ifos'))
-const Profile = lazy(() => import('./views/Profile'))
 const NotFound = lazy(() => import('./views/NotFound'))
 /*
+
+const Profile = lazy(() => import('./views/Profile'))
 const Farms = lazy(() => import('./views/Farms'))
 const Profile = lazy(() => import('./views/Profile'))
 const Lottery = lazy(() => import('./views/Lottery'))
@@ -38,8 +36,11 @@ BigNumber.config({
 const App: React.FC = () => {
   usePollBlockNumber()
   useEagerConnect()
-  useFetchProfile()
-  usePollCoreFarmData()
+
+  /**
+   * useFetchProfile()
+   * usePollCoreFarmData()
+  */
 
   return (
     <Router history={history}>
@@ -49,25 +50,13 @@ const App: React.FC = () => {
         <SuspenseWithChunkError fallback={<PageLoader />}>
           <Switch>
             <Route path="/" exact>
-              <Home />
-            </Route>
-            <Route path="/ido">
               <Ifos />
-              </Route>
-            <Route path="/profile">
-              <Profile />
             </Route>
-            {/* Redirect 
-                        <Route path="/nft">
-              <Redirect to="/home" />
-            </Route>
-            */}
             {/* 404 */}
             <Route component={NotFound} />
           </Switch>
         </SuspenseWithChunkError>
       </Menu>
-      <EasterEgg iterations={2} />
       <ToastListener />
     </Router>
   )
