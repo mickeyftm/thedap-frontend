@@ -61,7 +61,7 @@ const IfoCardDetails: React.FC<IfoCardDetailsProps> = ({ poolId, ifo, publicIfoD
     if (status === 'coming_soon') {
       return (
         <>
-          <FooterEntry label={t('MGH offered:')} value={offeringAmountPool} />
+          <FooterEntry label={t('MGH available:')} value={offeringAmountPool} />
           {poolId === PoolIds.poolEarly &&<FooterEntry
             label={t('fix.price per %symbol%:', { symbol: ifo.token.symbol })}
             value={priceA}
@@ -80,8 +80,7 @@ const IfoCardDetails: React.FC<IfoCardDetailsProps> = ({ poolId, ifo, publicIfoD
     if (status === 'live') {
       return (
         <>
-          <FooterEntry label={t('MGH offered:')} value={offeringAmountPool} />
-
+          <FooterEntry label={t('MGH available:')} value={offeringAmountPool} />
           {poolId === PoolIds.poolEarly &&<FooterEntry label={t('USDT participated:')} value={totalCommitted0} />}
           {poolId === PoolIds.poolBasic &&<FooterEntry label={t('USDT participated:')} value={totalCommitted1} />}
           {poolId === PoolIds.poolUnlimited &&<FooterEntry label={t('USDT participated:')} value={totalCommitted2} />}
@@ -96,7 +95,7 @@ const IfoCardDetails: React.FC<IfoCardDetailsProps> = ({ poolId, ifo, publicIfoD
     if (status === 'finished') {
       return (
         <>
-          <FooterEntry label={t('MGH offered:')} value={offeringAmountPool} />
+          <FooterEntry label={t('MGH available:')} value={offeringAmountPool} />
           {poolId === PoolIds.poolEarly &&<FooterEntry label={t('USDT participated:')} value={totalCommitted0} />}
           {poolId === PoolIds.poolBasic &&<FooterEntry label={t('USDT participated:')} value={totalCommitted1} />}
           {poolId === PoolIds.poolUnlimited &&<FooterEntry label={t('USDT participated:')} value={totalCommitted2} />}
@@ -108,7 +107,6 @@ const IfoCardDetails: React.FC<IfoCardDetailsProps> = ({ poolId, ifo, publicIfoD
     }
     return <SkeletonCardDetails />
   }
-
   return <Box paddingTop="24px">{renderBasedOnIfoStatus()}</Box>
 }
 

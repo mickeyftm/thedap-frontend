@@ -9,7 +9,7 @@ const config = [
     ],
   },
   {
-    title: 'Which offering should I participate in first? Can I do all?',
+    title: 'Which pool should I participate in first? Can I do all?',
     description: [
       'You can choose one or all at the same time!',
       'Early Pool will have a better participation reward than Basic Pool.',
