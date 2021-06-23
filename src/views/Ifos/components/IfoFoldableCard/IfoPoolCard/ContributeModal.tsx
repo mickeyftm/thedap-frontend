@@ -80,7 +80,7 @@ const ContributeModal: React.FC<Props> = ({
           .send({ from: account, gasPrice })
       },
       onSuccess: async () => {
-        await onSuccess(valueWithTokenDecimals)
+        await onSuccess(new BigNumber(value))
         onDismiss()
       },
     })
