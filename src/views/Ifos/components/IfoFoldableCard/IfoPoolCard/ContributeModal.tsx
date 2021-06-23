@@ -24,7 +24,7 @@ interface Props {
   onDismiss?: () => void
 }
 
-const multiplierValues = [0.1, 0.25, 0.5, 0.75, 1]
+const multiplierValues = [0.25, 0.5, 0.75, 1]
 
 // Default value for transaction setting, tweak based on BSC network congestion.
 const gasPrice = BIG_TEN.times(BIG_TEN.pow(BIG_NINE)).toString()
@@ -42,14 +42,14 @@ const ContributeModal: React.FC<Props> = ({
   const userPoolCharacteristics = walletIfoData[poolId]
 
   const { currency } = ifo
+  const { token } = ifo
   const { amountTokenCommittedInLP } = userPoolCharacteristics
   const { contract } = walletIfoData
   const [value, setValue] = useState('')
   const { account } = useWeb3React()
   const raisingTokenContract = useERC20(getAddress(currency.address))
   const { t } = useTranslation()
-  const valueWithTokenDecimals = new BigNumber(value).times(DEFAULT_TOKEN_DECIMAL)
-
+  const valueWithTokenDecimals = new BigNumber(getBalanceNumber(new BigNumber(value),-currency.decimals))
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm } =
     useApproveConfirmTransaction({
       onRequiresApproval: async () => {
@@ -84,11 +84,7 @@ const ContributeModal: React.FC<Props> = ({
         onDismiss()
       },
     })
-
-  const maximumLpCommitable = (() => {
-    return userCurrencyBalance
-  })()
-
+  
   return (
     <Modal title={t('Contribute %symbol%', { symbol: currency.symbol })} onDismiss={onDismiss}>
       <ModalBody maxWidth="320px">
@@ -102,8 +98,8 @@ const ContributeModal: React.FC<Props> = ({
           <Text>{t('Commit')}:</Text>
           <Flex flexGrow={1} justifyContent="flex-end">
             <Image
-              src={`/images/tokens/${currency.symbol.split(' ')[0].toLocaleLowerCase()}.svg`}
-              width={24}
+              src={`/images/tokens/${currency.symbol.toLocaleLowerCase()}.png`}
+              width={70}
               height={24}
             />
             <Text>{currency.symbol}</Text>
@@ -111,9 +107,9 @@ const ContributeModal: React.FC<Props> = ({
         </Flex>
         <BalanceInput
           value={value}
-          currencyValue={publicIfoData.currencyPriceInUSD.times(value || 0).toFixed(2)}
+          currencyValue={value}
           onUserInput={setValue}
-          isWarning={valueWithTokenDecimals.isGreaterThan(maximumLpCommitable)}
+          isWarning={valueWithTokenDecimals.isGreaterThan(userCurrencyBalance)}
           mb="8px"
         />
         <Text color="textSubtle" textAlign="right" fontSize="12px" mb="16px">
@@ -127,7 +123,7 @@ const ContributeModal: React.FC<Props> = ({
               key={multiplierValue}
               scale="xs"
               variant="tertiary"
-              onClick={() => setValue(getBalanceNumber(maximumLpCommitable.times(multiplierValue)).toString())}
+              onClick={() => setValue(getBalanceNumber(userCurrencyBalance.times(multiplierValue),currency.decimals).toString())}
               mr={index < multiplierValues.length - 1 ? '8px' : 0}
             >
               {multiplierValue * 100}%

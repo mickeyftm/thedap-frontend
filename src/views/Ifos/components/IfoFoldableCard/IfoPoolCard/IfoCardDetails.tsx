@@ -38,23 +38,20 @@ const IfoCardDetails: React.FC<IfoCardDetailsProps> = ({ poolId, ifo, publicIfoD
   const { t } = useTranslation()
   const { status, currencyPriceInUSD } = publicIfoData
   const poolCharacteristic = publicIfoData[poolId]
-
+ 
   /* Format start */
-  const offeringAmountPool = getBalanceNumber(poolCharacteristic.offeringAmountPool, ifo.currency.decimals)
+  const offeringAmountPool = getBalanceNumber(poolCharacteristic.offeringAmountPool, ifo.token.decimals)
   const totalAmountPool = getBalanceNumber(poolCharacteristic.totalAmountPool, ifo.currency.decimals)
-  const priceA = 1/ getBalanceNumber(poolCharacteristic.priceA, ifo.currency.decimals)
-  const priceB = 1/ getBalanceNumber(poolCharacteristic.priceB, ifo.currency.decimals)
+  const priceA = 1/ getBalanceNumber(poolCharacteristic.priceA, ifo.token.decimals-ifo.currency.decimals)
+  const priceB = 1/ getBalanceNumber(poolCharacteristic.priceB, ifo.token.decimals-ifo.currency.decimals)
   const priceC = totalAmountPool / offeringAmountPool
   let priceD = priceC 
   if(priceD<priceA){priceD=priceA}else if(priceD>priceB){priceD=priceB}
 
-  const totalCommittedPercent = poolCharacteristic.totalAmountPool
-    .div(poolCharacteristic.offeringAmountPool)
-    .times(100)
-    .toFixed(2)
+  const totalCommittedPercent = Math.round(totalAmountPool/offeringAmountPool*10000)/ 100
 
-  const totalLPCommittedInUSD = currencyPriceInUSD.times(totalAmountPool)
-  const totalCommitted = `~$${formatNumber(totalLPCommittedInUSD.toNumber())} (${totalCommittedPercent}%)`
+
+  const totalCommitted = `~$${formatNumber(totalAmountPool)} (${totalCommittedPercent}%)`
 
   /* Format end */
 
@@ -63,14 +60,17 @@ const IfoCardDetails: React.FC<IfoCardDetailsProps> = ({ poolId, ifo, publicIfoD
       return (
         <>
           <FooterEntry label={t('MGH offered:')} value={offeringAmountPool} />
-          <FooterEntry label={t('USDT to raise:')} value={ifo[poolId].saleAmount} />
           {poolId === PoolIds.poolEarly &&<FooterEntry
-            label={t('Price per %symbol%:', { symbol: ifo.token.symbol })}
-            value={`$${ifo.tokenOfferingPrice}`}
+            label={t('fix.price per %symbol%:', { symbol: ifo.token.symbol })}
+            value={priceA}
           />}
           {poolId === PoolIds.poolBasic &&<FooterEntry
-            label={t('Auction Start Price per %symbol%:', { symbol: ifo.token.symbol })}
-            value={`$${ifo.tokenOfferingPrice}`}
+            label={t('min.price per %symbol%:', { symbol: ifo.token.symbol })}
+            value={priceA}
+          />}
+          {poolId === PoolIds.poolBasic &&<FooterEntry
+            label={t('max.price per %symbol%:', { symbol: ifo.token.symbol })}
+            value={priceB}
           />}
         </>
       )
@@ -78,7 +78,7 @@ const IfoCardDetails: React.FC<IfoCardDetailsProps> = ({ poolId, ifo, publicIfoD
     if (status === 'live') {
       return (
         <>
-          <FooterEntry label={t('USDT participated:')} value={currencyPriceInUSD.gt(0) ? totalCommitted : null} />
+          <FooterEntry label={t('USDT participated:')} value={totalCommitted} />
           <FooterEntry label={t('MGH offered:')} value={offeringAmountPool} />
           {poolId === PoolIds.poolEarly && <FooterEntry label={t('fix.price')} value={priceA} />}
           {poolId === PoolIds.poolBasic && <FooterEntry label={t('now.price')} value={priceD} />}
@@ -91,7 +91,7 @@ const IfoCardDetails: React.FC<IfoCardDetailsProps> = ({ poolId, ifo, publicIfoD
     if (status === 'finished') {
       return (
         <>
-          <FooterEntry label={t('USDT participated:')} value={currencyPriceInUSD.gt(0) ? totalCommitted : null} />
+          <FooterEntry label={t('USDT participated:')} value={totalCommitted} />
           <FooterEntry label={t('MGH offered:')} value={offeringAmountPool} />
           {poolId === PoolIds.poolEarly && <FooterEntry label={t('price')} value={priceA} />}
           {poolId === PoolIds.poolBasic && <FooterEntry label={t('price')} value={priceD} />}

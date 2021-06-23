@@ -28,12 +28,12 @@ const cardConfig: CardConfig = {
   [PoolIds.poolEarly]: {
     title: 'Early Pool',
     variant: 'default',
-    tooltip: 'Early Pool with a fix price and distribution to the earliest buyers.',
+    tooltip: 'Early Pool with a fix.price and distribution to the earliest buyers.',
   },
   [PoolIds.poolBasic]: {
     title: 'Basic Pool',
     variant: 'blue',
-    tooltip: 'Basic Pool with a price ceiling and distribution to all participants.',
+    tooltip: 'Basic Pool with a max.price and distribution to all participants.',
   },
   [PoolIds.poolUnlimited]: {
     title: 'Unlimited Pool',
