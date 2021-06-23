@@ -48,10 +48,13 @@ const IfoCardDetails: React.FC<IfoCardDetailsProps> = ({ poolId, ifo, publicIfoD
   let priceD = priceC 
   if(priceD<priceA){priceD=priceA}else if(priceD>priceB){priceD=priceB}
 
-  const totalCommittedPercent = Math.round(totalAmountPool/offeringAmountPool*10000)/ 100
+  const totalCommittedPercent0 = Math.round(totalAmountPool/(offeringAmountPool/priceA)*100 *100)/ 100
+  const totalCommittedPercent1 = Math.round(totalAmountPool/(offeringAmountPool/priceD)*100 *100)/ 100
 
 
-  const totalCommitted = `~$${formatNumber(totalAmountPool)} (${totalCommittedPercent}%)`
+  const totalCommitted0 = `~$${formatNumber(totalAmountPool)} (${totalCommittedPercent0}%)`
+  const totalCommitted1 = `~$${formatNumber(totalAmountPool)} (${totalCommittedPercent1}%)`
+  const totalCommitted2 = `~$${formatNumber(totalAmountPool)}`
 
   /* Format end */
 
@@ -78,8 +81,11 @@ const IfoCardDetails: React.FC<IfoCardDetailsProps> = ({ poolId, ifo, publicIfoD
     if (status === 'live') {
       return (
         <>
-          <FooterEntry label={t('USDT participated:')} value={totalCommitted} />
           <FooterEntry label={t('MGH offered:')} value={offeringAmountPool} />
+
+          {poolId === PoolIds.poolEarly &&<FooterEntry label={t('USDT participated:')} value={totalCommitted0} />}
+          {poolId === PoolIds.poolBasic &&<FooterEntry label={t('USDT participated:')} value={totalCommitted1} />}
+          {poolId === PoolIds.poolUnlimited &&<FooterEntry label={t('USDT participated:')} value={totalCommitted2} />}
           {poolId === PoolIds.poolEarly && <FooterEntry label={t('fix.price')} value={priceA} />}
           {poolId === PoolIds.poolBasic && <FooterEntry label={t('now.price')} value={priceD} />}
           {poolId === PoolIds.poolBasic && <FooterEntry label={t('min.price')} value={priceA} />}
