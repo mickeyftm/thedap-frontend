@@ -4,7 +4,7 @@ import { PageMeta } from './types'
 export const DEFAULT_META: PageMeta = {
   title: 'thedap.space',
   description:
-    'The first DAO Governance Aggregator! DAO Offerings NPTs, and more.',
+    'The first DAO Governance Aggregator! DAO NPTs, and more.',
   image: 'https://pancakeswap.finance/images/hero.png',
 }
 
@@ -16,7 +16,7 @@ export const getCustomMeta = (path: string, t: ContextApi['t']): PageMeta => {
       }
     case '/ifo':
       return {
-        title: `${t('DAO Offering')} | ${t('thedap.sapce')}`,
+        title: `${t('DAO')} | ${t('thedap.sapce')}`,
       }
     default:
       return null

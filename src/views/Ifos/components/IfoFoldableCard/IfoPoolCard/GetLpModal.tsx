@@ -11,7 +11,7 @@ interface Props {
 const GetLpModal: React.FC<Partial<Props>> = ({ currency, onDismiss }) => {
   const { t } = useTranslation()
   return (
-    <Modal title={t('USDT Tokens required')} onDismiss={onDismiss}>
+    <Modal title={t('USDT tokens required')} onDismiss={onDismiss}>
       <ModalBody maxWidth="288px">
         <Image
           src={`/images/tokens/${currency.symbol}.png`}
@@ -20,7 +20,7 @@ const GetLpModal: React.FC<Partial<Props>> = ({ currency, onDismiss }) => {
           margin="auto"
           mb="24px"
         />
-        <Text mb="16px">{t('You’ll need USDT tokens to participate in the DAO offering pools!')}</Text>
+        <Text mb="16px">{t('You’ll need USDT tokens to participate in the DAO membership pools!')}</Text>
       </ModalBody>
     </Modal>
   )

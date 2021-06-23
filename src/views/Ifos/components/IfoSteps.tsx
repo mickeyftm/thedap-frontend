@@ -85,7 +85,7 @@ const IfoSteps: React.FC<Props> = ({ ifo, walletIfoData }) => {
               {t('Claim your membership')}
             </Heading>
             <Text color="textSubtle" small>
-              {t('After the MGH private sale finished, you can claim any MGH tokens, and any unspent USDT will be returned to your wallet.')} <br />
+              {t('After the MGH membership event finished, you can claim any MGH tokens, and any unspent USDT will be returned to your wallet.')} <br />
             </Text>
           </CardBody>
         )
@@ -104,7 +104,7 @@ const IfoSteps: React.FC<Props> = ({ ifo, walletIfoData }) => {
       {t('Conduct KYC')}
     </Heading>
     <Text color="textSubtle" small mb="16px">
-      {t('You’ll need a successful KYC application to become a private member in MGH DAO')}
+      {t('You’ll need a successful KYC application to become a member in MGH DAO')}
     </Text>
     <Button
               as={Link}
