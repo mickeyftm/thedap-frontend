@@ -15,8 +15,8 @@ const tokens = {
   mgh: {
     symbol: 'MGH',
     address: {
-      1: '0xD0EC69Bd238fa9818c3F6C147c60fAD2d04eb653',
-      3: '0xD0EC69Bd238fa9818c3F6C147c60fAD2d04eb653',
+      1: '0xd666f3c488f199241279f794a3eb1c7c8ad620de',
+      3: '0xd666f3c488f199241279f794a3eb1c7c8ad620de',
     },
     decimals: 18,
     projectLink: 'https://metagamehub.io/',
