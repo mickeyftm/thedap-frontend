@@ -97,8 +97,10 @@ const IfoCardDetails: React.FC<IfoCardDetailsProps> = ({ poolId, ifo, publicIfoD
     if (status === 'finished') {
       return (
         <>
-          <FooterEntry label={t('USDT participated:')} value={totalCommitted} />
           <FooterEntry label={t('MGH offered:')} value={offeringAmountPool} />
+          {poolId === PoolIds.poolEarly &&<FooterEntry label={t('USDT participated:')} value={totalCommitted0} />}
+          {poolId === PoolIds.poolBasic &&<FooterEntry label={t('USDT participated:')} value={totalCommitted1} />}
+          {poolId === PoolIds.poolUnlimited &&<FooterEntry label={t('USDT participated:')} value={totalCommitted2} />}
           {poolId === PoolIds.poolEarly && <FooterEntry label={t('price')} value={priceA} />}
           {poolId === PoolIds.poolBasic && <FooterEntry label={t('price')} value={priceD} />}
           {poolId === PoolIds.poolUnlimited && <FooterEntry label={t('price')} value={priceC} />}
