@@ -28,7 +28,7 @@ const formatPool = (pool) => ({
  */
 const useGetPublicIfoData = (ifo: Ifo): PublicIfoData => {
   const { address, releaseBlockNumber } = ifo
-  const lpTokenPriceInUsd = new BigNumber(1)    
+  const lpTokenPriceInUsd = new BigNumber(1)
   const { fastRefresh } = useRefresh()
 
   const [state, setState] = useState({

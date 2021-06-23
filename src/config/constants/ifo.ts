@@ -10,19 +10,19 @@ const usdtToken: Token = {
 export const ifos: Ifo[] = [
   {
     id: 'metagamehub',
-    address: '0xD0EC69Bd238fa9818c3F6C147c60fAD2d04eb653',
+    address: '0xbaD3739052b2C9a92Ed56dec06c01E649Cf57017',
     isActive: true,
     name: 'metagamehub (MGH)',
     poolEarly: {
-      saleAmount: '20,000,000 MGH',
+      saleAmount: '400,000 MGH',
       distributionRatio: 0.4,
     },
     poolBasic: {
-      saleAmount: '20,000,000 MGH',
+      saleAmount: '400,000 MGH',
       distributionRatio: 0.4,
     },
     poolUnlimited: {
-      saleAmount: '10,000,000 MGH',
+      saleAmount: '200,000 MGH',
       distributionRatio: 0.2,
     },
     currency: usdtToken,

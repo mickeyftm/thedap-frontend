@@ -85,7 +85,7 @@ const IfoCardTokens: React.FC<IfoCardTokensProps> = ({
             <Value>{ifo[poolId].saleAmount}</Value>
           </TokenSection>
           <Text fontSize="14px" color="textSubtle" pl="48px">
-            {t('%ratio%% of total sale', { ratio: distributionRatio })}
+            {t('%ratio%% of total offering', { ratio: distributionRatio })}
           </Text>
           {enableStatus !== EnableStatus.ENABLED && account && (
             <Button
@@ -127,7 +127,7 @@ const IfoCardTokens: React.FC<IfoCardTokensProps> = ({
         </Flex>
       ) : (
         <>
-          <TokenSection img={tokenImage} mb="24px">
+          <TokenSection img="/images/tokens/usdt.png" mb="24px">
             <Label>
               {t(hasClaimed ? 'Your %symbol% RECLAIMED' : 'Your %symbol% TO RECLAIM', { symbol: currency.symbol })}
             </Label>
