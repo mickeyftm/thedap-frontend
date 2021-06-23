@@ -109,7 +109,7 @@ const IfoSteps: React.FC<Props> = ({ ifo, walletIfoData }) => {
     <Button
               as={Link}
               external
-              href='https://metagamehub.io'
+              href='https://docs.google.com/forms/d/1Y1n8qkuf-7vLLFpC5fm8IxjST9umnLiXUUcBu7KwAuc/viewform?edit_requested=true#responses'
               endIcon={<OpenNewIcon color="white" />}
               mt="16px"
             >
