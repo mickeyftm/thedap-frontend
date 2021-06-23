@@ -48,9 +48,8 @@ const IfoCardDetails: React.FC<IfoCardDetailsProps> = ({ poolId, ifo, publicIfoD
   let priceD = priceC 
   if(priceD<priceA){priceD=priceA}else if(priceD>priceB){priceD=priceB}
 
-  const totalCommittedPercent0 = Math.round(totalAmountPool/(offeringAmountPool/priceA) *10000     *100)/ 100
-  const totalCommittedPercent1 = Math.round(totalAmountPool/(offeringAmountPool/priceD) *10000     *100)/ 100
-
+  const totalCommittedPercent0 = Math.round(totalAmountPool/(offeringAmountPool*priceA)*10000)/ 100
+  const totalCommittedPercent1 = Math.round(totalAmountPool/(offeringAmountPool*priceD)*10000)/ 100
 
   const totalCommitted0 = `~$${formatNumber(totalAmountPool)} (${totalCommittedPercent0}%)`
   const totalCommitted1 = `~$${formatNumber(totalAmountPool)} (${totalCommittedPercent1}%)`
