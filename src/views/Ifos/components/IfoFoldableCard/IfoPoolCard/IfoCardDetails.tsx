@@ -84,11 +84,11 @@ const IfoCardDetails: React.FC<IfoCardDetailsProps> = ({ poolId, ifo, publicIfoD
           {poolId === PoolIds.poolEarly &&<FooterEntry label={t('USDT participated:')} value={totalCommitted0} />}
           {poolId === PoolIds.poolBasic &&<FooterEntry label={t('USDT participated:')} value={totalCommitted1} />}
           {poolId === PoolIds.poolUnlimited &&<FooterEntry label={t('USDT participated:')} value={totalCommitted2} />}
-          {poolId === PoolIds.poolEarly && <FooterEntry label={t('fix.price')} value={priceA} />}
-          {poolId === PoolIds.poolBasic && <FooterEntry label={t('now.price')} value={priceD} />}
-          {poolId === PoolIds.poolBasic && <FooterEntry label={t('min.price')} value={priceA} />}
-          {poolId === PoolIds.poolBasic && <FooterEntry label={t('max.price')} value={priceB} />}
-          {poolId === PoolIds.poolUnlimited && <FooterEntry label={t('now.price')} value={priceC} />}
+          {poolId === PoolIds.poolEarly && <FooterEntry label={t('fix.price')} value={Math.round(priceA*100)/100} />}
+          {poolId === PoolIds.poolBasic && <FooterEntry label={t('now.price')} value={Math.round(priceD*100)/100} />}
+          {poolId === PoolIds.poolBasic && <FooterEntry label={t('min.price')} value={Math.round(priceA*100)/100} />}
+          {poolId === PoolIds.poolBasic && <FooterEntry label={t('max.price')} value={Math.round(priceB*100)/100} />}
+          {poolId === PoolIds.poolUnlimited && <FooterEntry label={t('now.price')} value={Math.round(priceC*100)/100} />}
         </>
       )
     }
@@ -99,9 +99,9 @@ const IfoCardDetails: React.FC<IfoCardDetailsProps> = ({ poolId, ifo, publicIfoD
           {poolId === PoolIds.poolEarly &&<FooterEntry label={t('USDT participated:')} value={totalCommitted0} />}
           {poolId === PoolIds.poolBasic &&<FooterEntry label={t('USDT participated:')} value={totalCommitted1} />}
           {poolId === PoolIds.poolUnlimited &&<FooterEntry label={t('USDT participated:')} value={totalCommitted2} />}
-          {poolId === PoolIds.poolEarly && <FooterEntry label={t('price')} value={priceA} />}
-          {poolId === PoolIds.poolBasic && <FooterEntry label={t('price')} value={priceD} />}
-          {poolId === PoolIds.poolUnlimited && <FooterEntry label={t('price')} value={priceC} />}
+          {poolId === PoolIds.poolEarly && <FooterEntry label={t('price')} value={Math.round(priceA*100)/100} />}
+          {poolId === PoolIds.poolBasic && <FooterEntry label={t('price')} value={Math.round(priceD*100)/100} />}
+          {poolId === PoolIds.poolUnlimited && <FooterEntry label={t('price')} value={Math.round(priceC*100)/100} />}
         </>
       )
     }

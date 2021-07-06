@@ -85,7 +85,7 @@ const IfoSteps: React.FC<Props> = ({ ifo, walletIfoData }) => {
               {t('Claim your membership')}
             </Heading>
             <Text color="textSubtle" small>
-              {t('After the MGH membership event finished, you can claim any MGH tokens, and any unspent USDT will be returned to your wallet.')} <br />
+              {t('After the MGH membership event finished, you can claim any MGH tokens, and any unspent USDT will be returned to your wallet. This will be possible starting 01.08.21.')} <br />
             </Text>
           </CardBody>
         )
@@ -101,19 +101,19 @@ const IfoSteps: React.FC<Props> = ({ ifo, walletIfoData }) => {
       </Heading>
       <CardBody>
     <Heading as="h4" color="secondary" mb="16px">
-      {t('Conduct KYC')}
+      {t('Accept DAO Participation Agreement')}
     </Heading>
     <Text color="textSubtle" small mb="16px">
-      {t('You’ll need a successful KYC application to become a member in MGH DAO')}
+      {t('You’ll need to accept the DAO Participation Agreement.')}
     </Text>
     <Button
               as={Link}
               external
-              href='https://docs.google.com/forms/d/1Y1n8qkuf-7vLLFpC5fm8IxjST9umnLiXUUcBu7KwAuc/viewform?edit_requested=true#responses'
+              href='https://drive.google.com/file/d/1i3D7ivVxBLfuILPy1lA2_dakbzUPqQrX/view?usp=sharing'
               endIcon={<OpenNewIcon color="white" />}
               mt="16px"
             >
-              {t('KYC')}
+              {t('Participation Agreement')}
             </Button>
     </CardBody>
       <Stepper>

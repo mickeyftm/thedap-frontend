@@ -3,7 +3,7 @@ import { ContextApi } from 'contexts/Localization/types'
 
 const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
   {
-    label: t('Home'),
+    label: t('LaunchPool'),
     icon: 'HomeIcon',
     href: '/',
   },

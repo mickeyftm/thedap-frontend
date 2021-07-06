@@ -106,8 +106,8 @@ const ContributeModal: React.FC<Props> = ({
           </Flex>
         </Flex>
         <BalanceInput
-          value={value}
-          currencyValue={value}
+          value={Math.round(new BigNumber(value).toNumber())}
+          currencyValue={Math.round(new BigNumber(value).toNumber())}
           onUserInput={setValue}
           isWarning={valueWithTokenDecimals.isGreaterThan(userCurrencyBalance)}
           mb="8px"
