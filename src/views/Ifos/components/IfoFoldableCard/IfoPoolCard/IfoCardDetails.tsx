@@ -64,15 +64,15 @@ const IfoCardDetails: React.FC<IfoCardDetailsProps> = ({ poolId, ifo, publicIfoD
           <FooterEntry label={t('MGH available:')} value={offeringAmountPool} />
           {poolId === PoolIds.poolEarly &&<FooterEntry
             label={t('fix.price per %symbol%:', { symbol: ifo.token.symbol })}
-            value={priceA}
+            value={Math.round(priceA*100)/100}
           />}
           {poolId === PoolIds.poolBasic &&<FooterEntry
             label={t('min.price per %symbol%:', { symbol: ifo.token.symbol })}
-            value={priceA}
+            value={Math.round(priceA*100)/100}
           />}
           {poolId === PoolIds.poolBasic &&<FooterEntry
             label={t('max.price per %symbol%:', { symbol: ifo.token.symbol })}
-            value={priceB}
+            value={Math.round(priceB*100)/100}
           />}
         </>
       )
