@@ -14,23 +14,23 @@ export const ifos: Ifo[] = [
     isActive: true,
     name: 'metagamehub (MGH)',
     poolEarly: {
-      saleAmount: '20,000,000 MGH',
-      distributionRatio: 0.4,
+      saleAmount: '9,000,000 MGH',
+      distributionRatio: 0.3,
     },
     poolBasic: {
-      saleAmount: '20,000,000 MGH',
-      distributionRatio: 0.4,
+      saleAmount: '18,000,000 MGH',
+      distributionRatio: 0.6,
     },
     poolUnlimited: {
-      saleAmount: '10,000,000 MGH',
-      distributionRatio: 0.2,
+      saleAmount: '3,000,000 MGH',
+      distributionRatio: 0.1,
     },
     currency: usdtToken,
     token: tokens.mgh,
     releaseBlockNumber: 7707736,
     campaignId: '100010000',
     articleUrl: 'https://metagamehub.io',
-    tokenOfferingPrice: 1,
+    tokenOfferingPrice: 0.06,
     version: 2,
   }
 ]
