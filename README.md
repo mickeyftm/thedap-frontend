@@ -2,5 +2,5 @@
 description: hallo
 ---
 
-# Initial page
+# DAO Aggregator
 
