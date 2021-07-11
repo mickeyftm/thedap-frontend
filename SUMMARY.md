@@ -1,6 +1,6 @@
 # Table of contents
 
-* [DAO Aggregator](README.md)
+* [Introduction](README.md)
 * [On-Boarding](on-boarding/README.md)
   * [KYC](on-boarding/kyc.md)
 * [Treasury](treasury/README.md)

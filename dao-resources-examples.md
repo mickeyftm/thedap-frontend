@@ -24,6 +24,8 @@ description: Feel free to add every resource about DAOs
 
 ### Governance
 
+{% embed url="https://aragon.org/" %}
+
 {% embed url="https://snapshot.org/\#/" %}
 
 ### Community Coordination
