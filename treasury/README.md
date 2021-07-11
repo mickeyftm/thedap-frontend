@@ -36,3 +36,29 @@ The goal of treasury spending is to reward core contributors and attract the rig
 
 **Write race by Mirror:** Individuals and DAOs vote on who should get access to publish on Mirror, writers who are already on Mirror have more votes to allocate.
 
+
+
+### Asset Allocation
+
+Diversifying into stablecoins provides a protocol DAO with the following benefits:
+
+* Maintain or ramp up spending in the event of a significant market drawdown
+* enable yield-generation on Yearn, Aave and Compound
+* Provide liquidity on stablecoin pools
+
+Problem/Challenge: Requires selling native protocol tokens -&gt; negative perception
+
+in search for stability-&gt;  SYI - [Stable Yield Index ](https://gov.indexcoop.com/t/syi-stable-yield-index/1058)"highest risk adjusted stablecoin return"
+
+### Token Buybacks
+
+Treasuries should buyback tokens when they trade at a significant discount. Yearn has a policiy with YIP-56 toperiodically buyback YFI with a portion of protocol earnings.
+
+### Reporting
+
+Browsing through etherscaN SUCKS. It's transparent and you will get some info, but is the transparency useful? 
+
+Nice to have some visuals like: [Yearn Q1 Report](https://github.com/yearn/yearn-pm/blob/master/financials/reports/2021Q1-yearn-quarterly-report.pdf)
+
+
+
