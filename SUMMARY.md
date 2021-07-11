@@ -1,6 +1,7 @@
 # Table of contents
 
 * [Introduction](README.md)
+* [Architecture](architecture.md)
 * [On-Boarding](on-boarding/README.md)
   * [KYC](on-boarding/kyc.md)
 * [Treasury](treasury/README.md)
@@ -12,5 +13,9 @@
   * [Voting](projects/voting.md)
 * [Community](community.md)
 * [Knowledge Management](knowledge-management.md)
+* [2-Layer-Solutions](2-layer-solutions/README.md)
+  * [Ethereum ⮂ Polygon](2-layer-solutions/ethereum-polygon.md)
+  * [Ethereum ⮂ Arbitrum](2-layer-solutions/ethereum-arbitrum.md)
+  * [Ethereum ⮂ Optimism](2-layer-solutions/ethereum-optimism.md)
 * [DAO Resources / Examples](dao-resources-examples.md)
 
