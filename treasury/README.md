@@ -52,11 +52,11 @@ in search for stability-&gt;  SYI - [Stable Yield Index ](https://gov.indexcoop.
 
 ### Token Buybacks
 
-Treasuries should buyback tokens when they trade at a significant discount. Yearn has a policiy with YIP-56 toperiodically buyback YFI with a portion of protocol earnings.
+Treasuries should buyback tokens when they trade at a significant discount. Yearn has a policiy with YIP-56 to periodically buyback YFI with a portion of protocol earnings.
 
 ### Reporting
 
-Browsing through etherscaN SUCKS. It's transparent and you will get some info, but is the transparency useful? 
+Browsing through etherscan SUCKS. It's transparent and you will get some info, but is the transparency useful? 
 
 Nice to have some visuals like: [Yearn Q1 Report](https://github.com/yearn/yearn-pm/blob/master/financials/reports/2021Q1-yearn-quarterly-report.pdf)
 
