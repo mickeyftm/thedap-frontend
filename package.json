@@ -36,7 +36,7 @@
     "@ethersproject/abi": "^5.1.2",
     "@pancakeswap-libs/sdk": "^1.0.1",
     "@reduxjs/toolkit": "^1.5.0",
-    "@thedac-space/thedap-uikit": "^1.2.0",
+    "@thedac-space/thedap-uikit": "^2.1.0",
     "@types/react": "^17.0.5",
     "@types/react-dom": "^17.0.4",
     "@types/react-router-dom": "^5.1.5",
