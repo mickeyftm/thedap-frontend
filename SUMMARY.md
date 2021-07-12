@@ -17,9 +17,10 @@
 * [Community](community/README.md)
   * [Untitled](community/untitled.md)
 * [Knowledge Management](knowledge-management.md)
-* [2-Layer-Solutions](2-layer-solutions/README.md)
+* [Layer-2](2-layer-solutions/README.md)
   * [Ethereum ⮂ Polygon](2-layer-solutions/ethereum-polygon.md)
   * [Ethereum ⮂ Arbitrum](2-layer-solutions/ethereum-arbitrum.md)
   * [Ethereum ⮂ Optimism](2-layer-solutions/ethereum-optimism.md)
+* [FAQ](faq.md)
 * [DAO Resources / Examples](dao-resources-examples.md)
 
