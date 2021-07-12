@@ -2,7 +2,7 @@ const config = [
   {
     title: 'What’s the difference between an Early, Basic, Unlimited Pool?',
     description: [
-      'Every user can participate USDT to claim membership upon successful KYC.',
+      'Every user can participate USDT to claim membership upon agreeing to the Participation Agreement.',
       'In the Early Pool, the price is set fix and supply limited until complete participation.',
       'In the Basic Pool, the price is set and has an upper ceiling, distribution according to percentage based participation.',
       'In the Unlimited Pool, the price is determined solely by supply and demand.',
