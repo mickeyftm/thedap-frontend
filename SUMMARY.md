@@ -11,6 +11,7 @@
 * [Projects](projects/README.md)
   * [Proposal](projects/proposal.md)
   * [Voting](projects/voting.md)
+* [Governance](governance.md)
 * [Community](community/README.md)
   * [Untitled](community/untitled.md)
 * [Knowledge Management](knowledge-management.md)

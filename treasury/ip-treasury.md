@@ -1,2 +1,2 @@
-# NFT Treasury
+# IP Treasury
 
